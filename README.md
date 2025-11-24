@@ -43,7 +43,7 @@ Then open `https://localhost:5001` (or the URL shown in the console).
 Unit and integration tests are located under `UnitTests/`. Run them from the repository root:
 
 ```powershell
-cd "f:/Projects/Software Fundamentals/511025FQ-03/UnitTests"
+cd "Folder"
 dotnet test
 ```
 
@@ -63,35 +63,10 @@ Deployment options:
 Example: publish using `dotnet` and Web Deploy (Visual Studio publish profiles are the simplest for this repo):
 
 ```powershell
-cd "f:/Projects/Software Fundamentals/511025FQ-03/src"
+cd "f:/src"
 dotnet publish -c Release -o ./publish
 # Use your preferred deployment method to push the contents of ./publish to the target host
 ```
-
-### Containerization (recommended for reproducible deployments)
-
-There is no `Dockerfile` in the repository currently. A minimal Dockerfile for an ASP.NET Core app would look like:
-
-```dockerfile
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-WORKDIR /app
-EXPOSE 80
-
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /src
-COPY ["ContosoCrafts.WebSite.csproj", "./"]
-RUN dotnet restore "ContosoCrafts.WebSite.csproj"
-COPY . ./
-WORKDIR "/src"
-RUN dotnet publish "ContosoCrafts.WebSite.csproj" -c Release -o /app/publish
-
-FROM base AS final
-WORKDIR /app
-COPY --from=build /app/publish .
-ENTRYPOINT ["dotnet", "ContosoCrafts.WebSite.dll"]
-```
-
-If you want, I can add a Dockerfile and a GitHub Actions workflow to build and optionally publish the image to ACR.
 
 ## CI/CD
 
