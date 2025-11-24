@@ -1,0 +1,82 @@
+﻿@page
+@model ErrorModel
+@{
+    ViewData["Title"] = "ERROR";
+}
+
+@section PageSpecificStyles {
+    <link rel="stylesheet" href="~/css/general-pages.css" asp-append-version="true" />
+}
+
+<div class="neo-error-page">
+    <div class="neo-error-header">
+        <div class="neo-error-icon">💥</div>
+        <h1 class="neo-error-title">OOPS! SOMETHING WENT WRONG</h1>
+        <div class="neo-error-subtitle">AN ERROR OCCURRED WHILE PROCESSING YOUR REQUEST</div>
+    </div>
+
+    <div class="neo-error-content">
+        <div class="neo-error-main">
+            <div class="neo-error-graphic">
+                <div class="neo-error-shapes">
+                    <div class="neo-broken-shape"></div>
+                    <div class="neo-broken-shape"></div>
+                    <div class="neo-broken-shape"></div>
+                </div>
+            </div>
+
+            <div class="neo-error-message">
+                <h2 class="neo-message-title">🚫 ERROR DETECTED</h2>
+                <p class="neo-message-text">
+                    DON'T WORRY! OUR TEAM HAS BEEN NOTIFIED AND IS WORKING TO FIX THIS ISSUE.
+                </p>
+            </div>
+        </div>
+
+        @if (Model.ShowRequestId)
+        {
+            <div class="neo-debug-info">
+                <div class="neo-debug-header">
+                    <h3 class="neo-debug-title">🔍 DEBUG INFORMATION</h3>
+                </div>
+                <div class="neo-debug-content">
+                    <div class="neo-request-id">
+                        <span class="neo-debug-label">REQUEST ID:</span>
+                        <code class="neo-debug-code">@Model.RequestId</code>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div class="neo-dev-info">
+            <div class="neo-dev-header">
+                <h3 class="neo-dev-title">⚙️ DEVELOPMENT MODE</h3>
+            </div>
+            <div class="neo-dev-content">
+                <p class="neo-dev-text">
+                    SWAPPING TO THE <strong>DEVELOPMENT</strong> ENVIRONMENT DISPLAYS DETAILED INFORMATION ABOUT THE
+                    ERROR THAT OCCURRED.
+                </p>
+                <div class="neo-warning-box">
+                    <div class="neo-warning-icon">⚠️</div>
+                    <div class="neo-warning-content">
+                        <p class="neo-warning-text">
+                            <strong>THE DEVELOPMENT ENVIRONMENT SHOULDN'T BE ENABLED FOR DEPLOYED APPLICATIONS.</strong>
+                            IT CAN RESULT IN DISPLAYING SENSITIVE INFORMATION FROM EXCEPTIONS TO END USERS.
+                        </p>
+                        <p class="neo-warning-text">
+                            FOR LOCAL DEBUGGING, ENABLE THE <strong>DEVELOPMENT</strong> ENVIRONMENT BY SETTING THE
+                            <strong>ASPNETCORE_ENVIRONMENT</strong> ENVIRONMENT VARIABLE TO <strong>DEVELOPMENT</strong>
+                            AND RESTARTING THE APP.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="neo-error-actions">
+            <a href="/" class="neo-btn neo-btn-primary">🏠 GO HOME</a>
+            <button onclick="history.back()" class="neo-btn neo-btn-secondary">⬅️ GO BACK</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+Uni HUb - Project Summary
+
+Tech stack:
+- C#, ASP.NET Core (Server-side Blazor + Razor Pages + MVC controllers)
+- .NET 8.0 (TargetFramework: net8.0)
+- Dependency Injection, HttpClient; product data served from `wwwroot/data/products.json`
+- Hosting model: OutOfProcess
+
+Problem solved:
+- Provides a small product-catalog/demo website for listing products, serving product data,
+  and supporting simple comment/product interactions. Built primarily as a tutorial/sample app
+  to demonstrate ASP.NET Core, Blazor Server, and unit/integration testing patterns.
+
+Impact (speed, scale, efficiency, users):
+- Speed: Lightweight server-side rendering and static JSON data yield fast local reads and
+  responsive UI for small-to-moderate user counts.
+- Scale: Intended for demos and small audiences; can scale to moderate traffic on Azure App Service
+  but would need a proper database/cache for high-scale production.
+- Efficiency: Low infrastructure complexity (no external DB by default), ideal for teaching,
+  prototyping, and internal demos.
+
+Deployment & CI/CD:
+- Azure-oriented: project contains publish profiles (`src/Properties/PublishProfiles/*.pubxml`) and
+  ARM templates under `src/Properties/ServiceDependencies/*profile.arm.json` targeting Azure App Service (Windows).
+- No `Dockerfile` present and `.github/workflows` is empty — containerization and CI are not configured yet.
+- Typical deployment options: publish via Visual Studio/Web Deploy using the included profiles, or add a `Dockerfile` and a CI workflow (GitHub Actions/Azure DevOps) to build and push an image (ACR) or deploy to App Service/AKS.

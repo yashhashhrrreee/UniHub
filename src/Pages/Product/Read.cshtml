@@ -1,0 +1,203 @@
+﻿@page "{id}"
+@using ContosoCrafts.WebSite.Services
+@inject JsonFileProductService ProductService
+@model ContosoCrafts.WebSite.Pages.Product.ReadModel
+@{
+    ViewData["Title"] = "Read page";
+}
+
+@section PageSpecificStyles {
+    <link rel="stylesheet" href="~/css/product-detail.css" asp-append-version="true" />
+}
+
+<div class="neo-read-container">
+    <div class="neo-university-header">
+        @if (Model.Product.TypeOfUniversity != ContosoCrafts.WebSite.Models.ProductTypeEnum.Undefined)
+        {
+            <span class="neo-university-type-header">@Model.Product.TypeOfUniversity</span>
+        }
+        <h1 class="neo-detail-title">@Model.Product.Title</h1>
+    </div>
+
+    <div class="neo-detail-grid">
+        <div class="neo-detail-main">
+            @if (!string.IsNullOrEmpty(Model.Product.Description))
+            {
+                <div class="neo-detail-section">
+                    <h2 class="neo-section-title">📋 DESCRIPTION</h2>
+                    <p class="neo-detail-text">@Model.Product.Description</p>
+                </div>
+            }
+        </div>
+
+        <div class="neo-detail-sidebar">
+            @if (!string.IsNullOrEmpty(Model.Product.Image))
+            {
+                <div class="neo-detail-image-card">
+                    <img class="neo-detail-image" src='@Model.Product.Image' alt='Image for @Model.Product.Title'>
+                    <p class="neo-image-caption">@Model.Product.Title Campus</p>
+                </div>
+            }
+
+            <div class="neo-quick-info-card">
+                <h3 class="neo-quick-info-title">🎯 QUICK INFO</h3>
+                <div class="neo-info-item">
+                    <span class="neo-info-label">DEPARTMENTS:</span>
+                    <span class="neo-info-value">@Model.Product.NumberOfDepartments</span>
+                </div>
+                <div class="neo-info-item">
+                    <span class="neo-info-label">ONLINE PROGRAMS:</span>
+                    <span class="neo-info-value">@(Model.Product.HasOnlinePrograms ? "YES" : "NO")</span>
+                </div>
+                @if (Model.Product.Campuses?.Count > 0)
+                {
+                    <div class="neo-info-item">
+                        <span class="neo-info-label">CAMPUSES:</span>
+                        <div class="neo-campus-section">
+                            <span class="neo-info-value">@Model.Product.Campuses.Count</span>
+                            <button id="toggleCampusBtn" class="neo-btn-campus" aria-expanded="false">
+                                📍 SHOW CAMPUSES
+                            </button>
+                        </div>
+                    </div>
+                    <div id="campusListContainer" class="neo-campus-list neo-hidden">
+                        @foreach (var campus in Model.Product.Campuses)
+                        {
+                            <div class="neo-campus-item">📍 @campus</div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    @if ((Model.Product.GraduateDegree != null && Model.Product.GraduateDegree.Length > 0) ||
+        (Model.Product.UnderGraduateDegree != null && Model.Product.UnderGraduateDegree.Length > 0))
+    {
+        <div class="neo-programs-section">
+            <h2 class="neo-programs-title">🎓 ACADEMIC PROGRAMS</h2>
+
+            <div class="neo-programs-grid">
+                @if (Model.Product.GraduateDegree != null && Model.Product.GraduateDegree.Length > 0)
+                {
+                    <div class="neo-program-category">
+                        <div class="neo-program-header">🎓 GRADUATE DEGREES</div>
+                        <p class="neo-detail-text">Advanced academic qualifications (Master's or PhD programs) that build on
+                            undergraduate study.</p>
+
+                        <button id="toggleGraduateBtn" class="neo-btn-action neo-btn-edit" aria-expanded="true">
+                            📜 HIDE GRADUATE DEGREES
+                        </button>
+
+                        <ul id="graduateDegreeContainer" class="neo-program-list neo-show">
+                            @foreach (var gd in Model.Product.GraduateDegree)
+                            {
+                                <li class="neo-program-item">@gd</li>
+                            }
+                        </ul>
+                    </div>
+                }
+
+                @if (Model.Product.UnderGraduateDegree != null && Model.Product.UnderGraduateDegree.Length > 0)
+                {
+                    <div class="neo-program-category">
+                        <div class="neo-program-header">🎓 UNDERGRADUATE DEGREES</div>
+                        <p class="neo-detail-text">Bachelor's programs that provide foundational knowledge and skills in various
+                            subject areas.</p>
+
+                        <button id="toggleUndergradBtn" class="neo-btn-action neo-btn-edit" aria-expanded="true">
+                            📜 HIDE UNDERGRADUATE DEGREES
+                        </button>
+
+                        <ul id="undergradDegreeContainer" class="neo-program-list neo-show">
+                            @foreach (var ug in Model.Product.UnderGraduateDegree)
+                            {
+                                <li class="neo-program-item">@ug</li>
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+
+    <div class="neo-action-section">
+        <div class="neo-action-buttons">
+            <a asp-page="./Update" asp-route-id="@Model.Product.Id" class="neo-btn-action neo-btn-edit">✏️ UPDATE
+                UNIVERSITY</a>
+            <a asp-page="./Delete" asp-route-id="@Model.Product.Id" class="neo-btn-action neo-btn-delete">🗑️ DELETE
+                UNIVERSITY</a>
+            <a asp-page="./Index" class="neo-btn-action neo-btn-back">↩️ BACK TO LIST</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Toggle Graduate Degrees
+        var toggleGradBtn = document.getElementById('toggleGraduateBtn');
+        var gradContainer = document.getElementById('graduateDegreeContainer');
+
+        if (toggleGradBtn && gradContainer) {
+            toggleGradBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                var isVisible = gradContainer.classList.contains('neo-show');
+                if (isVisible) {
+                    gradContainer.classList.remove('neo-show');
+                    gradContainer.classList.add('neo-hidden');
+                    toggleGradBtn.innerHTML = '📜 SHOW GRADUATE DEGREES';
+                    toggleGradBtn.setAttribute('aria-expanded', 'false');
+                } else {
+                    gradContainer.classList.remove('neo-hidden');
+                    gradContainer.classList.add('neo-show');
+                    toggleGradBtn.innerHTML = '📜 HIDE GRADUATE DEGREES';
+                    toggleGradBtn.setAttribute('aria-expanded', 'true');
+                }
+            });
+        }
+
+        // Toggle Undergraduate Degrees
+        var toggleUndergradBtn = document.getElementById('toggleUndergradBtn');
+        var undergradContainer = document.getElementById('undergradDegreeContainer');
+
+        if (toggleUndergradBtn && undergradContainer) {
+            toggleUndergradBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                var isVisible = undergradContainer.classList.contains('neo-show');
+                if (isVisible) {
+                    undergradContainer.classList.remove('neo-show');
+                    undergradContainer.classList.add('neo-hidden');
+                    toggleUndergradBtn.innerHTML = '📜 SHOW UNDERGRADUATE DEGREES';
+                    toggleUndergradBtn.setAttribute('aria-expanded', 'false');
+                } else {
+                    undergradContainer.classList.remove('neo-hidden');
+                    undergradContainer.classList.add('neo-show');
+                    toggleUndergradBtn.innerHTML = '📜 HIDE UNDERGRADUATE DEGREES';
+                    toggleUndergradBtn.setAttribute('aria-expanded', 'true');
+                }
+            });
+        }
+
+        // Toggle Campus List
+        var toggleCampusBtn = document.getElementById('toggleCampusBtn');
+        var campusContainer = document.getElementById('campusListContainer');
+
+        if (toggleCampusBtn && campusContainer) {
+            toggleCampusBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                var isVisible = campusContainer.classList.contains('neo-show');
+                if (isVisible) {
+                    campusContainer.classList.remove('neo-show');
+                    campusContainer.classList.add('neo-hidden');
+                    toggleCampusBtn.innerHTML = '📍 SHOW CAMPUSES';
+                    toggleCampusBtn.setAttribute('aria-expanded', 'false');
+                } else {
+                    campusContainer.classList.remove('neo-hidden');
+                    campusContainer.classList.add('neo-show');
+                    toggleCampusBtn.innerHTML = '📍 HIDE CAMPUSES';
+                    toggleCampusBtn.setAttribute('aria-expanded', 'true');
+                }
+            });
+        }
+    });
+</script>

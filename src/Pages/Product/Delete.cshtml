@@ -1,0 +1,127 @@
+@page "{id}"
+@model ContosoCrafts.WebSite.Pages.Product.DeleteModel
+
+@{
+    ViewData["Title"] = "DELETE UNIVERSITY";
+}
+
+@section PageSpecificStyles {
+    <link rel="stylesheet" href="~/css/product-delete.css" asp-append-version="true" />
+}
+
+<div class="neo-delete-container">
+    <!-- PAGE HEADER -->
+    <div class="neo-page-header">
+        <h1 class="neo-page-title">🗑️ DELETE UNIVERSITY</h1>
+        <p class="neo-page-subtitle">
+            PERMANENT REMOVAL CONFIRMATION
+        </p>
+    </div>
+
+    <!-- WARNING SECTION -->
+    <div class="neo-warning-section">
+        <div class="neo-warning-card">
+            <div class="neo-warning-icon">⚠️</div>
+            <div class="neo-warning-content">
+                <h2 class="neo-warning-title">DANGER ZONE!</h2>
+                <p class="neo-warning-text">
+                    THIS ACTION CANNOT BE UNDONE. THE UNIVERSITY WILL BE PERMANENTLY DELETED FROM THE SYSTEM.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- UNIVERSITY PREVIEW -->
+    <div class="neo-university-section">
+        <div class="neo-section-header">
+            <h3 class="neo-section-title">🏫 UNIVERSITY TO DELETE</h3>
+        </div>
+
+        <div class="neo-university-card">
+            <div class="neo-university-image">
+                @if (!string.IsNullOrEmpty(Model.Product.Image))
+                {
+                    <img src="@Model.Product.Image" alt="@Model.Product.Title" class="neo-image" />
+                }
+                else
+                {
+                    <div class="neo-image-placeholder">
+                        <div class="neo-placeholder-icon">📷</div>
+                        <div class="neo-placeholder-text">NO IMAGE</div>
+                    </div>
+                }
+            </div>
+
+            <div class="neo-university-details">
+                <h4 class="neo-university-name">@Model.Product.Title.ToUpperInvariant()</h4>
+
+                <div class="neo-details-grid">
+                    <div class="neo-detail-item">
+                        <div class="neo-detail-label">📝 DESCRIPTION</div>
+                        <div class="neo-detail-value">@Model.Product.Description</div>
+                    </div>
+
+                    <div class="neo-detail-item">
+                        <div class="neo-detail-label">📍 LOCATION</div>
+                        <div class="neo-detail-value">@Model.Product.Location</div>
+                    </div>
+
+                    <div class="neo-detail-item">
+                        <div class="neo-detail-label">🏛️ TYPE</div>
+                        <div class="neo-detail-value">@Model.Product.TypeOfUniversity</div>
+                    </div>
+
+                    <div class="neo-detail-item">
+                        <div class="neo-detail-label">🏢 DEPARTMENTS</div>
+                        <div class="neo-detail-value">@Model.Product.NumberOfDepartments</div>
+                    </div>
+
+                    <div class="neo-detail-item">
+                        <div class="neo-detail-label">💻 ONLINE PROGRAMS</div>
+                        <div class="neo-detail-value">@(Model.Product.HasOnlinePrograms ? "YES" : "NO")</div>
+                    </div>
+                </div>
+
+                @if (Model.Product.Campuses != null && Model.Product.Campuses.Any())
+                {
+                    <div class="neo-campuses-section">
+                        <div class="neo-detail-label">🏢 CAMPUSES</div>
+                        <div class="neo-campus-list">
+                            @foreach (var campus in Model.Product.Campuses)
+                            {
+                                <span class="neo-campus-tag">@campus.ToUpperInvariant()</span>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- DELETE CONFIRMATION -->
+    <div class="neo-confirmation-section">
+        <div class="neo-section-header">
+            <h3 class="neo-section-title">⚙️ FINAL CONFIRMATION</h3>
+        </div>
+        <div class="neo-section-body">
+            <p class="neo-confirmation-text">
+                ARE YOU ABSOLUTELY SURE YOU WANT TO DELETE THIS UNIVERSITY? THIS ACTION IS IRREVERSIBLE!
+            </p>
+            <div class="neo-safety-notice">
+                <div class="neo-safety-text">🛡️ ONCE DELETED, ALL DATA WILL BE PERMANENTLY LOST</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DELETE ACTIONS -->
+    <div class="neo-actions-section">
+        <form method="post">
+            <input type="hidden" asp-for="Product.Id" />
+
+            <div class="neo-action-buttons">
+                <button type="submit" class="neo-btn neo-btn-danger">🗑️ DELETE FOREVER</button>
+                <a asp-page="./Index" class="neo-btn neo-btn-safe">❌ CANCEL & GO BACK</a>
+            </div>
+        </form>
+    </div>
+</div>

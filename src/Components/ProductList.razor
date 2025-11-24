@@ -1,0 +1,340 @@
+@using ContosoCrafts.WebSite.Models
+@using ContosoCrafts.WebSite.Services
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.JSInterop
+@inject JsonFileProductService ProductService
+@inject IJSRuntime JS
+@attribute [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+
+<!-- SEARCH BAR -->
+<div class="neo-search-container">
+    <div class="neo-search-card-home">
+        <h2 class="neo-search-title">🔍 SEARCH UNIVERSITIES</h2>
+
+        <div class="neo-search-controls">
+            <input type="text" @bind="searchTerm" @bind:event="oninput" class="neo-input neo-search-input"
+                placeholder="TYPE UNIVERSITY NAME..." />
+
+            <select class="neo-select neo-type-filter" @onchange="OnTypeChanged">
+                <option value="">ALL TYPES</option>
+                @foreach (var t in Enum.GetValues(typeof(ProductTypeEnum)).Cast<ProductTypeEnum>())
+                {
+                    if (t == ProductTypeEnum.Undefined) continue;
+                    <option value="@t">@t</option>
+                }
+            </select>
+        </div>
+    </div>
+</div>
+
+<!-- UNIVERSITY CARDS -->
+<div class="neo-products-grid">
+    @foreach (var product in FilteredProducts)
+    {
+        <div class="neo-university-card-home">
+            <div class="neo-card-image-home">
+                @if (!string.IsNullOrEmpty(product.Image))
+                {
+                    <img src="@product.Image" alt="@product.Title" class="neo-university-image-home" />
+                }
+
+                @if (string.IsNullOrEmpty(product.Image))
+                {
+                    <div class="neo-image-placeholder-home">🏛️</div>
+                }
+            </div>
+
+            <div class="neo-card-content-home">
+                <div class="neo-card-header-home">
+                    <span class="neo-university-type-home @GetFlagClass(product.TypeOfUniversity)">
+                        @product.TypeOfUniversity
+                    </span>
+                    <h5 class="neo-card-title-home">@product.Title</h5>
+                </div>
+
+                <div class="neo-card-footer-home">
+                    <button @onclick="(e => SelectProduct(product.Id))" class="neo-btn neo-btn-info-home">
+                        MORE INFO
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@if (selectedProduct != null)
+{
+    <div class="neo-modal-overlay" id="productModal" @onclick="CloseModal" role="dialog" aria-modal="true">
+        <div class="neo-modal-content" @onclick:stopPropagation="true">
+
+            <div class="neo-modal-header">
+                <h5 class="neo-modal-title">@selectedProduct.Title</h5>
+                <button type="button" class="neo-btn-close" @onclick="CloseModal">
+                    ❌
+                </button>
+            </div>
+
+            <div class="neo-modal-body">
+
+                <div class="neo-modal-card">
+                    <div class="neo-modal-image">
+                        @if (!string.IsNullOrEmpty(selectedProduct.Image))
+                        {
+                            <img src="@selectedProduct.Image" alt="@selectedProduct.Title" class="neo-modal-img" />
+                        }
+
+                        @if (string.IsNullOrEmpty(selectedProduct.Image))
+                        {
+                            <div class="neo-modal-placeholder">🏛️</div>
+                        }
+                    </div>
+
+                    <div class="neo-modal-info">
+                        <p class="neo-modal-description">@selectedProduct.Description</p>
+
+                        <div class="neo-modal-details">
+
+                            @if (selectedProduct.TypeOfUniversity != ProductTypeEnum.Undefined)
+                            {
+                                <p class="neo-detail-item"><strong>TYPE:</strong> @selectedProduct.TypeOfUniversity</p>
+                            }
+
+                            <p class="neo-detail-item"><strong>DEPARTMENTS:</strong> @selectedProduct.NumberOfDepartments</p>
+                            <p class="neo-detail-item"><strong>ONLINE PROGRAMS:</strong>
+                                @if (selectedProduct.HasOnlinePrograms)
+                                {
+                                    @:YES
+                                }
+
+                                @if (!selectedProduct.HasOnlinePrograms)
+                                {
+                                    @:NO
+                                }
+                            </p>
+
+                            @if (selectedProduct.Campuses != null)
+                            {
+                                if (selectedProduct.Campuses.Count > 0)
+                                {
+                                    <p class="neo-detail-item"><strong>CAMPUSES:</strong> @string.Join(", ", selectedProduct.Campuses)</p>
+                                }
+                            }
+                        </div>
+
+                        @if (selectedProduct.GraduateDegree != null)
+                        {
+                            if (selectedProduct.GraduateDegree.Length > 0)
+                            {
+                                <div class="neo-degree-section">
+                                    <h6 class="neo-degree-title">GRADUATE DEGREES</h6>
+                                    <ul class="neo-degree-list">
+                                        @foreach (var gd in selectedProduct.GraduateDegree)
+                                        {
+                                            <li class="neo-degree-item">@gd</li>
+                                        }
+                                    </ul>
+                                </div>
+                            }
+                        }
+
+                        @if (selectedProduct.UnderGraduateDegree != null)
+                        {
+                            if (selectedProduct.UnderGraduateDegree.Length > 0)
+                            {
+                                <div class="neo-degree-section">
+                                    <h6 class="neo-degree-title">UNDERGRADUATE DEGREES</h6>
+                                    <ul class="neo-degree-list">
+                                        @foreach (var ug in selectedProduct.UnderGraduateDegree)
+                                        {
+                                            <li class="neo-degree-item">@ug</li>
+                                        }
+                                    </ul>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="neo-modal-footer">
+                <div class="neo-rating-section">
+                    @if (voteCount == 0)
+                    {
+                        <span class="neo-rating-text">BE THE FIRST TO VOTE!</span>
+                    }
+
+                    @if (voteCount != 0)
+                    {
+                        <span class="neo-rating-text">@voteCount @voteLabel</span>
+                    }
+
+                    <div class="neo-stars">
+                        @for (int i = 1; i < 6; i++)
+                        {
+                            var currentStar = i;
+                            if (i <= currentRating)
+                            {
+                                <span class="neo-star checked" @onclick="(e => SubmitRating(currentStar))">⭐</span>
+                            }
+
+                            if (i > currentRating)
+                            {
+                                <span class="neo-star" @onclick="(e => SubmitRating(currentStar))">☆</span>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+@code {
+
+    // Currently selected product shown in the modal.
+    ProductModel selectedProduct;
+
+    // ID of the currently selected product.
+    string selectedProductId;
+
+    // Current user search term.
+    string searchTerm = string.Empty;
+
+    // Currently selected type filter as a string.
+    string selectedType = string.Empty;
+
+    // All products loaded from the service.
+    IEnumerable<ProductModel> allProducts;
+
+    IEnumerable<ProductModel> FilteredProducts
+    {
+        get
+        {
+            if (allProducts == null)
+            {
+                return Enumerable.Empty<ProductModel>();
+            }
+
+            var query = allProducts.AsEnumerable();
+
+            if (!string.IsNullOrWhiteSpace(searchTerm))
+            {
+                var term = searchTerm;
+
+                query = query.Where(p =>
+                {
+                    if (!string.IsNullOrEmpty(p.Title) && p.Title.Contains(term, StringComparison.OrdinalIgnoreCase))
+                    {
+                        return true;
+                    }
+
+                    if (!string.IsNullOrEmpty(p.Description) && p.Description.Contains(term, StringComparison.OrdinalIgnoreCase))
+                    {
+                        return true;
+                    }
+
+                    return false;
+                });
+            }
+
+            if (!string.IsNullOrWhiteSpace(selectedType))
+            {
+                if (Enum.TryParse<ProductTypeEnum>(selectedType, out var parsed))
+                {
+                    query = query.Where(p => p.TypeOfUniversity == parsed);
+                }
+            }
+
+            return query;
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        allProducts = ProductService.GetProducts();
+    }
+
+    void OnTypeChanged(ChangeEventArgs e)
+    {
+        selectedType = e?.Value?.ToString() ?? string.Empty;
+    }
+    
+    // Simplified SelectProduct to rely on Blazor-rendered modal (no bootstrapInterop call).
+    async Task SelectProduct(string productId)
+    {
+        selectedProductId = productId;
+        selectedProduct = ProductService.GetProducts().First(x => x.Id == productId);
+
+        GetCurrentRating();
+
+        // No JS bootstrapInterop.showModal; Blazor will render overlay when selectedProduct != null.
+        await InvokeAsync(StateHasChanged);
+    }
+    
+    // Make CloseModal async and ensure any leftover bootstrap backdrops or modal-open classes are removed.
+    async Task CloseModal()
+    {
+        // Remove any lingering Bootstrap backdrops or modal-open class that might have been created previously.
+        // CHANGED: this uses a small JS eval to remove elements and clean the body class (safe and minimal).
+        try
+        {
+            await JS.InvokeVoidAsync("eval", "document.querySelectorAll('.modal-backdrop').forEach(e=>e.remove()); document.body.classList.remove('modal-open');");
+        }
+        catch
+        {
+            // ignore errors if eval isn't allowed or jQuery/Bootstrap isn't present
+        }
+
+        selectedProduct = null;
+        selectedProductId = string.Empty;
+
+        await InvokeAsync(StateHasChanged);
+    }
+    
+    int currentRating = 0;
+    int voteCount = 0;
+    string voteLabel;
+
+    void GetCurrentRating()
+    {
+        if (selectedProduct == null || selectedProduct.Ratings == null || selectedProduct.Ratings.Length == 0)
+        {
+            currentRating = 0;
+            voteCount = 0;
+        }
+        else
+        {
+            voteCount = selectedProduct.Ratings.Count();
+            voteLabel = voteCount > 1 ? "Votes" : "Vote";
+            currentRating = selectedProduct.Ratings.Sum() / voteCount;
+        }
+    }
+
+    async Task SubmitRating(int rating)
+    {
+        ProductService.AddRating(selectedProductId, rating);
+        await SelectProduct(selectedProductId);
+    }
+
+    // Removed showModalRequested & OnAfterRenderAsync entirely
+    // bool showModalRequested = false;
+
+    // FLAG CLASS FUNCTION
+    string GetFlagClass(ProductTypeEnum type)
+    {
+        return type switch
+        {
+            ProductTypeEnum.Public => "flag-public",
+            ProductTypeEnum.Private => "flag-private",
+            ProductTypeEnum.Online => "flag-online",
+            ProductTypeEnum.Community => "flag-community",
+            ProductTypeEnum.Other => "flag-other",
+            _ => "flag-undefined"
+        };
+    }
+
+}

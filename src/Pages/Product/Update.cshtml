@@ -1,0 +1,308 @@
+﻿@page "{id}"
+@model ContosoCrafts.WebSite.Pages.Product.UpdateModel
+@using ContosoCrafts.WebSite.Models
+@{
+    ViewData["Title"] = "Update Product";
+}
+
+@section PageSpecificStyles {
+    <link rel="stylesheet" href="~/css/product-update.css" asp-append-version="true" />
+}
+
+<div class="neo-update-container">
+    <div class="neo-page-header">
+        <h1 class="neo-page-title">✏️ UPDATE UNIVERSITY</h1>
+        <p class="neo-page-subtitle">MODIFY UNIVERSITY INFORMATION</p>
+    </div>
+
+    <div class="neo-form-container">
+        <form method="post" enctype="multipart/form-data" novalidate class="neo-form">
+            <input type="hidden" asp-for="Product.Id" />
+
+            <!-- Basic Information Section -->
+            <div class="neo-form-section">
+                <h2 class="neo-section-title">📚 BASIC INFORMATION</h2>
+
+                <div class="neo-form-grid">
+                    <div class="neo-form-group">
+                        <label asp-for="Product.Title" class="neo-label">🎓 UNIVERSITY NAME</label>
+                        <input asp-for="Product.Title" class="neo-input" placeholder="ENTER UNIVERSITY NAME..." />
+                        <span asp-validation-for="Product.Title" class="neo-error"></span>
+                    </div>
+
+                    <div class="neo-form-group">
+                        <label asp-for="Product.TypeOfUniversity" class="neo-label">🏛️ UNIVERSITY TYPE</label>
+                        <select asp-for="Product.TypeOfUniversity" class="neo-select">
+                            <option value="">-- SELECT TYPE --</option>
+                            <option value="Public"
+                                selected="@(Model.Product?.TypeOfUniversity == ProductTypeEnum.Public)">
+                                🏛️ PUBLIC</option>
+                            <option value="Private"
+                                selected="@(Model.Product?.TypeOfUniversity == ProductTypeEnum.Private)">
+                                🏢 PRIVATE</option>
+                            <option value="Community"
+                                selected="@(Model.Product?.TypeOfUniversity == ProductTypeEnum.Community)">🌍 COMMUNITY
+                            </option>
+                            <option value="Online"
+                                selected="@(Model.Product?.TypeOfUniversity == ProductTypeEnum.Online)">
+                                💻 ONLINE</option>
+                            <option value="Other"
+                                selected="@(Model.Product?.TypeOfUniversity == ProductTypeEnum.Other)">🎓 OTHER
+                            </option>
+                        </select>
+                        <span asp-validation-for="Product.TypeOfUniversity" class="neo-error"></span>
+                    </div>
+                </div>
+
+                <div class="neo-form-group">
+                    <label asp-for="Product.Description" class="neo-label">📝 DESCRIPTION</label>
+                    <textarea asp-for="Product.Description" class="neo-textarea" rows="4"
+                        placeholder="ENTER UNIVERSITY DESCRIPTION..."></textarea>
+                    <span asp-validation-for="Product.Description" class="neo-error"></span>
+                </div>
+
+                <div class="neo-form-grid">
+                    <div class="neo-form-group">
+                        <label asp-for="Product.Url" class="neo-label">🌐 WEBSITE URL</label>
+                        <input asp-for="Product.Url" class="neo-input" placeholder="https://university.edu" />
+                        <span asp-validation-for="Product.Url" class="neo-error"></span>
+                    </div>
+
+                    <div class="neo-form-group">
+                        <label asp-for="Product.Location" class="neo-label">📍 LOCATION</label>
+                        <input asp-for="Product.Location" class="neo-input" placeholder="CITY, STATE, COUNTRY..." />
+                        <span asp-validation-for="Product.Location" class="neo-error"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- University Details Section -->
+            <div class="neo-form-section">
+                <h2 class="neo-section-title">🏢 UNIVERSITY DETAILS</h2>
+
+                <div class="neo-form-grid">
+                    <div class="neo-form-group">
+                        <label asp-for="Product.NumberOfDepartments" class="neo-label">🏢 NUMBER OF DEPARTMENTS</label>
+                        <input asp-for="Product.NumberOfDepartments" type="number" class="neo-input" min="1" max="500"
+                            placeholder="ENTER NUMBER..." />
+                        <span asp-validation-for="Product.NumberOfDepartments" class="neo-error"></span>
+                    </div>
+
+                    <div class="neo-form-group">
+                        <label class="neo-label">💻 ONLINE PROGRAMS</label>
+                        <div class="neo-checkbox-container">
+                            <label class="neo-checkbox-label">
+                                <input asp-for="Product.HasOnlinePrograms" class="neo-checkbox" type="checkbox" />
+                                <span class="neo-checkbox-custom"></span>
+                                <span class="neo-checkbox-text">OFFERS ONLINE PROGRAMS</span>
+                            </label>
+                        </div>
+                        <span asp-validation-for="Product.HasOnlinePrograms" class="neo-error"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image Section -->
+            <div class="neo-form-section">
+                <h2 class="neo-section-title">🖼️ UNIVERSITY IMAGE</h2>
+
+                @if (!string.IsNullOrEmpty(Model.Product?.Image))
+                {
+                    <div class="neo-current-image">
+                        <img src="@Model.Product.Image" alt="Current image" class="neo-current-image-preview" />
+                        <div class="neo-image-caption">CURRENT IMAGE</div>
+                    </div>
+                }
+
+                <div class="neo-form-group">
+                    <label asp-for="Product.Image" class="neo-label">🔗 IMAGE URL</label>
+                    <input asp-for="Product.Image" class="neo-input" placeholder="https://example.com/image.jpg" />
+                    <span asp-validation-for="Product.Image" class="neo-error"></span>
+                </div>
+
+                <div class="neo-file-upload-section">
+                    <label class="neo-label">📁 OR UPLOAD NEW IMAGE</label>
+                    <div class="neo-file-upload">
+                        <input asp-for="Upload" type="file" accept=".png,.jpg,.jpeg,image/png,image/jpeg"
+                            class="neo-file-input" id="imageUpload" />
+                        <label for="imageUpload" class="neo-file-label">
+                            📁 CHOOSE FILE
+                        </label>
+                        <span class="neo-file-text">JPG, PNG • MAX 5MB</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Degrees Section -->
+            <div class="neo-form-section">
+                <h2 class="neo-section-title">🎓 ACADEMIC PROGRAMS</h2>
+
+                <div class="neo-degrees-container">
+                    <div class="neo-degree-section">
+                        <h3 class="neo-degree-title">🎓 GRADUATE DEGREES</h3>
+                        <p class="neo-degree-help">ADD OR MODIFY GRADUATE DEGREE PROGRAMS</p>
+                        <div id="grad-list" class="neo-dynamic-list">
+                            @if (Model.Product?.GraduateDegree != null && Model.Product.GraduateDegree.Length > 0)
+                            {
+                                foreach (var g in Model.Product.GraduateDegree)
+                                {
+                                    <div class="neo-input-group">
+                                        <input name="Product.GraduateDegree" class="neo-input" value="@g"
+                                            placeholder="GRADUATE DEGREE NAME..." />
+                                        <button type="button" class="neo-btn-remove" onclick="removeRow(this)">
+                                            🗑️ REMOVE
+                                        </button>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <div class="neo-input-group">
+                                    <input name="Product.GraduateDegree" class="neo-input"
+                                        placeholder="GRADUATE DEGREE NAME..." />
+                                    <button type="button" class="neo-btn-remove" onclick="removeRow(this)">
+                                        🗑️ REMOVE
+                                    </button>
+                                </div>
+                            }
+                        </div>
+                        <button type="button" class="neo-btn-add" onclick="addDegreeInput('GraduateDegree')">
+                            ➕ ADD GRADUATE DEGREE
+                        </button>
+                    </div>
+
+                    <div class="neo-degree-section">
+                        <h3 class="neo-degree-title">🎓 UNDERGRADUATE DEGREES</h3>
+                        <p class="neo-degree-help">ADD OR MODIFY UNDERGRADUATE DEGREE PROGRAMS</p>
+                        <div id="undergrad-list" class="neo-dynamic-list">
+                            @if (Model.Product?.UnderGraduateDegree != null && Model.Product.UnderGraduateDegree.Length
+                                                        > 0)
+                            {
+                                foreach (var u in Model.Product.UnderGraduateDegree)
+                                {
+                                    <div class="neo-input-group">
+                                        <input name="Product.UnderGraduateDegree" class="neo-input" value="@u"
+                                            placeholder="UNDERGRADUATE DEGREE NAME..." />
+                                        <button type="button" class="neo-btn-remove" onclick="removeRow(this)">
+                                            🗑️ REMOVE
+                                        </button>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <div class="neo-input-group">
+                                    <input name="Product.UnderGraduateDegree" class="neo-input"
+                                        placeholder="UNDERGRADUATE DEGREE NAME..." />
+                                    <button type="button" class="neo-btn-remove" onclick="removeRow(this)">
+                                        🗑️ REMOVE
+                                    </button>
+                                </div>
+                            }
+                        </div>
+                        <button type="button" class="neo-btn-add" onclick="addDegreeInput('UnderGraduateDegree')">
+                            ➕ ADD UNDERGRADUATE DEGREE
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Campus Section -->
+            <div class="neo-form-section">
+                <h2 class="neo-section-title">🏢 CAMPUSES</h2>
+
+                <div class="neo-form-group">
+                    <p class="neo-section-help">ADD OR MODIFY CAMPUS LOCATIONS</p>
+                    <div id="campus-list" class="neo-dynamic-list">
+                        @if (Model.Product?.Campuses != null && Model.Product.Campuses.Count > 0)
+                        {
+                            foreach (var c in Model.Product.Campuses)
+                            {
+                                <div class="neo-input-group">
+                                    <input name="Product.Campuses" class="neo-input" value="@c"
+                                        placeholder="CAMPUS NAME OR LOCATION..." />
+                                    <button type="button" class="neo-btn-remove" onclick="removeRow(this)">
+                                        🗑️ REMOVE
+                                    </button>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="neo-input-group">
+                                <input name="Product.Campuses" class="neo-input" placeholder="CAMPUS NAME OR LOCATION..." />
+                                <button type="button" class="neo-btn-remove" onclick="removeRow(this)">
+                                    🗑️ REMOVE
+                                </button>
+                            </div>
+                        }
+                    </div>
+                    <button type="button" class="neo-btn-add" onclick="addCampusInput()">
+                        ➕ ADD CAMPUS
+                    </button>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="neo-form-actions">
+                <button type="submit" class="neo-btn-primary">
+                    💾 SAVE CHANGES
+                </button>
+                <a asp-page="./Index" class="neo-btn-secondary">
+                    ❌ CANCEL
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    function addDegreeInput(degree_type) {
+        if (degree_type === 'UnderGraduateDegree') {
+            const undergradList = document.getElementById("undergrad-list");
+            const newElement = document.createElement("div");
+            newElement.className = "neo-input-group";
+            newElement.innerHTML = `
+                <input name="Product.UnderGraduateDegree" class="neo-input" placeholder="UNDERGRADUATE DEGREE..." />
+                <button type="button" class="neo-btn neo-btn-remove" onclick="removeRow(this)">❌ REMOVE</button>
+            `;
+            undergradList.appendChild(newElement);
+        } else if (degree_type === 'GraduateDegree') {
+            const gradList = document.getElementById("grad-list");
+            const newElement = document.createElement("div");
+            newElement.className = "neo-input-group";
+            newElement.innerHTML = `
+                <input name="Product.GraduateDegree" class="neo-input" placeholder="GRADUATE DEGREE..." />
+                <button type="button" class="neo-btn neo-btn-remove" onclick="removeRow(this)">❌ REMOVE</button>
+            `;
+            gradList.appendChild(newElement);
+        }
+    }
+
+    function addCampusInput() {
+        const campusList = document.getElementById("campus-list");
+        const newElement = document.createElement("div");
+        newElement.className = "neo-input-group";
+        newElement.innerHTML = `
+            <input name="Product.Campuses" class="neo-input" placeholder="CAMPUS NAME..." />
+            <button type="button" class="neo-btn neo-btn-remove" onclick="removeRow(this)">❌ REMOVE</button>
+        `;
+        campusList.appendChild(newElement);
+    }
+
+    function removeRow(btn) {
+        btn.parentNode.remove();
+    }
+
+    function previewImage(input) {
+        const preview = document.getElementById('image-preview');
+        const file = input.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+</script>

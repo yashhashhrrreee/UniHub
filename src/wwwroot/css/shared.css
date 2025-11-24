@@ -1,0 +1,390 @@
+/* NEO-BRUTALISM DESIGN SYSTEM - SHARED STYLES */
+/* Colors, Typography, Layout, Navbar, Footer */
+
+:root {
+    /* Neo-Brutalism Colors - Updated to Lighter Palette */
+    --neo-cyan: #87CEEB;        /* Light blue from your palette */
+    --neo-lime: #90EE90;        /* Light green from your palette */
+    --neo-magenta: #FFB2EF;     /* Light pink from your palette */
+    --neo-blue: #A388EE;        /* Light purple from your palette */
+    --neo-yellow: #F4D738;      /* Light yellow from your palette */
+    --neo-orange: #FF7A5C;      /* Light coral from your palette */
+    --neo-black: #000000;
+    --neo-white: #FFFFFF;
+    --neo-gray: #B5D2AD;
+    --neo-gray-light: #F5F5F5;
+    --neo-purple: #A388EE;      /* Light purple from your palette */
+    
+    /* Vintage/Muted variants - Updated */
+    --neo-mint: #90EE90;        /* Light green */
+    --neo-peach: #FFE5D9;       /* Keep the current peach background */
+    --neo-lavender: #FFB2EF;    /* Light pink */
+    --neo-sky: #87CEEB;         
+    
+    /* Typography */
+    --neo-font-heading: 'Archivo Black', 'Public Sans', 'Arial Black', sans-serif;
+    --neo-font-body: 'Public Sans', 'Arial', sans-serif;
+    --neo-font-display: 'Bebas Neue', 'Arial Black', sans-serif;
+    
+    /* Danger and Success colors */
+    --danger-red: #FF0000;
+    --success-green: #32CD32;
+    
+    /* Neo-Brutalism Borders and Shadows */
+    --neo-border: 4px solid var(--neo-black);
+    --neo-border-thick: 6px solid var(--neo-black);
+    --neo-shadow: 4px 4px 0px var(--neo-black);
+    --neo-shadow-small: 3px 3px 0px var(--neo-black);
+    --neo-shadow-large: 8px 8px 0px var(--neo-black);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--neo-font-body);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+    margin: 0;
+    padding: 0;
+    background: var(--neo-peach);
+    color: var(--neo-black);
+    text-transform: uppercase;
+}
+
+/* NAVBAR - NEO-BRUTALIST STYLE */
+.neo-navbar {
+    background: var(--neo-magenta) !important;
+    border: 6px solid var(--neo-black);
+    border-radius: 0;
+    padding: 20px 0;
+    box-shadow: 0 8px 0px var(--neo-black);
+    margin-bottom: 0;
+}
+
+.neo-brand {
+    font-family: var(--neo-font-heading);
+    font-weight: 900;
+    font-size: 24px;
+    color: var(--neo-black) !important;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+.brand-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.brand-icon {
+    font-size: 40px;
+    background: var(--neo-peach);
+    border: 4px solid var(--neo-black);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 4px 4px 0px var(--neo-black);
+}
+
+.brand-text {
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+.neo-toggler {
+    border: 3px solid var(--neo-black) !important;
+    background: var(--neo-lime);
+    border-radius: 0;
+    padding: 10px 15px;
+}
+
+.neo-toggler:focus {
+    box-shadow: 4px 4px 0px var(--neo-black);
+}
+
+.neo-toggler-icon {
+    background-image: none;
+    width: 25px;
+    height: 3px;
+    background: var(--neo-black);
+    position: relative;
+    transition: all 0.3s;
+}
+
+.neo-toggler-icon:before,
+.neo-toggler-icon:after {
+    content: '';
+    width: 25px;
+    height: 3px;
+    background: var(--neo-black);
+    position: absolute;
+    left: 0;
+    transition: all 0.3s;
+}
+
+.neo-toggler-icon:before {
+    top: -8px;
+}
+
+.neo-toggler-icon:after {
+    top: 8px;
+}
+
+.neo-nav {
+    gap: 20px;
+}
+
+.neo-nav-link {
+    font-family: var(--neo-font-body);
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--neo-black) !important;
+    text-decoration: none;
+    padding: 12px 20px;
+    border: 3px solid var(--neo-black);
+    background: var(--neo-white);
+    transition: all 0.1s ease;
+    letter-spacing: 1px;
+    margin: 0 5px;
+}
+
+.neo-nav-link:hover {
+    background: var(--neo-cyan);
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0px var(--neo-black);
+}
+
+/* MAIN CONTENT CONTAINER */
+.neo-main-container {
+    min-height: calc(100vh - 200px);
+    padding: 40px 20px;
+}
+
+.neo-content {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* FOOTER */
+.neo-footer {
+    background: var(--neo-black);
+    color: var(--neo-white);
+    border: 6px solid var(--neo-black);
+    padding: 30px 0;
+    margin-top: 50px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-text {
+    font-family: var(--neo-font-body);
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.footer-link {
+    font-family: var(--neo-font-body);
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--neo-peach);
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 3px solid var(--neo-peach);
+    background: transparent;
+    transition: all 0.1s ease;
+    letter-spacing: 1px;
+}
+
+.footer-link:hover {
+    background: var(--neo-peach);
+    color: var(--neo-black);
+    transform: translate(2px, 2px);
+}
+
+/* COMMON BUTTON STYLES */
+.neo-btn {
+    font-family: var(--neo-font-body);
+    font-weight: 800;
+    font-size: 16px;
+    padding: 15px 25px;
+    border: 4px solid var(--neo-black);
+    background: var(--neo-white);
+    color: var(--neo-black);
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.1s ease;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 4px 4px 0px var(--neo-black);
+}
+
+.neo-btn:hover {
+    transform: translate(3px, 3px);
+    box-shadow: 3px 3px 0px var(--neo-black);
+}
+
+.neo-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--neo-cyan);
+}
+
+/* Button Variants */
+.neo-btn-primary {
+    background: var(--neo-lime);
+    color: var(--neo-black);
+}
+
+.neo-btn-primary:hover {
+    background: var(--neo-cyan);
+}
+
+.neo-btn-secondary {
+    background: var(--neo-gray-light);
+    color: var(--neo-black);
+}
+
+.neo-btn-secondary:hover {
+    background: var(--neo-peach);
+}
+
+.neo-btn-danger {
+    background: var(--danger-red);
+    color: var(--neo-white);
+}
+
+.neo-btn-danger:hover {
+    background: var(--neo-black);
+}
+
+/* OVERRIDE BOOTSTRAP STYLES */
+.btn:not(.neo-btn) {
+    display: none !important;
+}
+
+/* Force Neo-Brutalism on all elements */
+input, select, textarea, button {
+    border-radius: 0 !important;
+    font-family: var(--neo-font-body) !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+}
+
+/* Bootstrap override for cards */
+.card {
+    border-radius: 0 !important;
+    border: 4px solid var(--neo-black) !important;
+    box-shadow: 4px 4px 0px var(--neo-black) !important;
+}
+
+/* Bootstrap override for forms */
+.form-control {
+    border-radius: 0 !important;
+    border: 4px solid var(--neo-black) !important;
+    font-family: var(--neo-font-body) !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+}
+
+.form-control:focus {
+    border-color: var(--neo-black) !important;
+    box-shadow: 4px 4px 0px var(--neo-black) !important;
+}
+
+/* General Neo-Brutalism Text Styles */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--neo-font-heading) !important;
+    font-weight: 900 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    color: var(--neo-black) !important;
+    margin: 0 0 20px 0 !important;
+}
+
+p, span, div {
+    font-family: var(--neo-font-body) !important;
+    font-weight: 600 !important;
+    color: var(--neo-black) !important;
+}
+
+/* Links */
+a {
+    color: var(--neo-black) !important;
+    font-weight: 800 !important;
+    text-decoration: none !important;
+}
+
+a:hover {
+    color: var(--neo-black) !important;
+    text-decoration: none !important;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .neo-main-container {
+        padding: 20px 10px;
+    }
+    
+    .neo-navbar {
+        padding: 15px 0;
+    }
+    
+    .brand-container {
+        gap: 10px;
+    }
+    
+    .brand-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 30px;
+    }
+    
+    .neo-nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .neo-nav-link {
+        margin: 5px 0;
+        text-align: center;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+}
+
+/* Fix for invisible footer privacy link */
+.neo-footer .footer-link {
+    color: var(--neo-white) !important;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border: 3px solid var(--neo-white);
+    padding: 8px 16px;
+    display: inline-block;
+    box-shadow: 4px 4px 0 var(--neo-black);
+    background: var(--neo-black);
+}
+
+.neo-footer .footer-link:hover {
+    background: var(--neo-yellow);
+    color: var(--neo-black) !important;
+    box-shadow: 6px 6px 0 var(--neo-black);
+    transform: translate(-2px, -2px);
+}

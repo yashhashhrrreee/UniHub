@@ -1,0 +1,524 @@
+/* PRODUCT DETAIL/READ PAGE STYLES - NEO-BRUTALISM */
+
+/* MAIN CONTAINER */
+.neo-read-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background: var(--neo-background);
+    min-height: calc(100vh - 200px);
+}
+
+/* UNIVERSITY HEADER */
+.neo-university-header {
+    background: var(--neo-white);
+    border: var(--neo-border-thick);
+    box-shadow: var(--neo-shadow-large);
+    padding: 60px 40px;
+    margin-bottom: 50px;
+    text-align: center;
+    position: relative;
+}
+
+.neo-university-type-header {
+    display: inline-block;
+    background: var(--neo-lime);
+    color: var(--neo-black);
+    padding: 12px 25px;
+    border: var(--neo-border);
+    font-family: var(--neo-font-heading);
+    font-size: 16px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: var(--neo-shadow);
+    margin-bottom: 25px;
+    transform: rotate(-2deg);
+}
+
+.neo-detail-title {
+    font-family: var(--neo-font-heading);
+    font-size: clamp(42px, 8vw, 72px);
+    font-weight: 900;
+    letter-spacing: 3px;
+    margin: 0;
+    color: var(--neo-black);
+    text-shadow: 4px 4px 0px var(--neo-magenta);
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+/* DETAIL GRID LAYOUT */
+.neo-detail-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 50px;
+    margin-bottom: 50px;
+}
+
+/* MAIN CONTENT */
+.neo-detail-main {
+    background: var(--neo-white);
+    border: var(--neo-border-thick);
+    box-shadow: var(--neo-shadow-large);
+    padding: 50px;
+}
+
+.neo-detail-section {
+    margin-bottom: 40px;
+}
+
+.neo-section-title {
+    text-shadow: 1px 1px 0px var(--neo-black);
+    transform: rotate(-0.5deg);
+}
+
+.neo-detail-text {
+    font-family: var(--neo-font-body);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.7;
+    color: var(--neo-black);
+    margin: 25px 0;
+    letter-spacing: 0.5px;
+}
+
+/* SIDEBAR */
+.neo-detail-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* IMAGE CARD */
+.neo-detail-image-card {
+    background: var(--neo-white);
+    border: var(--neo-border-thick);
+    box-shadow: var(--neo-shadow-large);
+    padding: 25px;
+    text-align: center;
+}
+
+.neo-detail-image {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border: var(--neo-border);
+    box-shadow: var(--neo-shadow);
+}
+
+.neo-image-caption {
+    font-family: var(--neo-font-body);
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--neo-black);
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: var(--neo-yellow);
+    padding: 10px 15px;
+    border: var(--neo-border);
+    box-shadow: var(--neo-shadow-small);
+    display: inline-block;
+}
+
+/* QUICK INFO CARD */
+.neo-quick-info-card {
+    background: var(--neo-yellow);
+    border: var(--neo-border-thick);
+    box-shadow: var(--neo-shadow-large);
+    padding: 35px;
+}
+
+.neo-quick-info-title {
+    font-family: var(--neo-font-heading);
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--neo-white);
+    margin: 0 0 25px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    background: var(--neo-blue);
+    padding: 15px;
+    margin: -35px -35px 30px -35px;
+}
+
+.neo-info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+    border-bottom: 4px solid var(--neo-black);
+    font-family: var(--neo-font-body);
+    font-weight: 700;
+}
+
+.neo-info-item:last-child {
+    border-bottom: none;
+}
+
+.neo-info-label {
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--neo-black);
+    font-weight: 900;
+}
+
+.neo-info-value {
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--neo-black);
+    background: var(--neo-white);
+    padding: 12px 20px;
+    border: var(--neo-border);
+    box-shadow: var(--neo-shadow);
+}
+
+/* PROGRAMS SECTION */
+.neo-programs-section {
+    background: var(--neo-white);
+    border: var(--neo-border-thick);
+    box-shadow: var(--neo-shadow-large);
+    padding: 50px;
+    margin-bottom: 50px;
+}
+
+.neo-programs-title {
+    font-family: var(--neo-font-heading);
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--neo-white);
+    margin: 0 0 40px 0;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-align: center;
+    background: var(--neo-magenta);
+    padding: 25px;
+    border: var(--neo-border);
+    box-shadow: var(--neo-shadow);
+    text-shadow: 3px 3px 0px var(--neo-black);
+}
+
+.neo-programs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.neo-program-category {
+    background: var(--neo-peach);
+    border: var(--neo-border-thick);
+    box-shadow: var(--neo-shadow-large);
+    padding: 40px;
+}
+
+.neo-program-header {
+    background: var(--neo-blue);
+    color: var(--neo-white);
+    padding: 20px 25px;
+    border: var(--neo-border);
+    box-shadow: var(--neo-shadow);
+    margin: -40px -40px 30px -40px;
+    font-family: var(--neo-font-heading);
+    font-size: 22px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px var(--neo-black);
+}
+
+.neo-program-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 25px;
+}
+
+.neo-program-item {
+    background: var(--neo-white);
+    border: var(--neo-border);
+    box-shadow: var(--neo-shadow);
+    padding: 18px 25px;
+    margin-bottom: 15px;
+    font-family: var(--neo-font-body);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--neo-black);
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.neo-program-item:hover {
+    background: var(--neo-cyan);
+    transform: translateX(-3px) translateY(-3px);
+    box-shadow: 6px 6px 0px var(--neo-black);
+}
+
+.neo-program-item:before {
+    content: "→";
+    font-weight: 900;
+    margin-right: 10px;
+    color: var(--neo-magenta);
+}
+
+/* TOGGLE BUTTONS FOR DEGREES */
+.neo-btn-action {
+    padding: 18px 30px;
+    font-size: 16px;
+    font-weight: 900;
+    border: var(--neo-border);
+    box-shadow: var(--neo-shadow);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    font-family: var(--neo-font-body);
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.neo-btn-edit {
+    background: var(--neo-orange);
+    color: var(--neo-black);
+}
+
+.neo-btn-delete {
+    background: var(--danger-red);
+    color: var(--neo-white);
+}
+
+.neo-btn-back {
+    background: var(--neo-cyan);
+    color: var(--neo-black);
+}
+
+.neo-btn-action:hover {
+    box-shadow: var(--neo-shadow-large);
+    transform: translateX(-3px) translateY(-3px);
+}
+
+/* CAMPUS DROPDOWN STYLING */
+.neo-campus-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.neo-btn-campus {
+    padding: 8px 15px;
+    font-size: 12px;
+    font-weight: 900;
+    border: var(--neo-border);
+    box-shadow: var(--neo-shadow-small);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    font-family: var(--neo-font-body);
+    background: var(--neo-cyan);
+    color: var(--neo-black);
+}
+
+.neo-btn-campus:hover {
+    box-shadow: var(--neo-shadow);
+    transform: translateX(-2px) translateY(-2px);
+}
+
+.neo-campus-list {
+    margin-top: 15px;
+    padding: 15px 0 0 0;
+    border-top: 3px solid var(--neo-black);
+}
+
+.neo-campus-item {
+    background: var(--neo-white);
+    border: var(--neo-border);
+    box-shadow: var(--neo-shadow-small);
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    font-family: var(--neo-font-body);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--neo-black);
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+}
+
+.neo-campus-item:hover {
+    background: var(--neo-cyan);
+    transform: translateX(-2px) translateY(-2px);
+    box-shadow: var(--neo-shadow);
+}
+
+.neo-campus-item:last-child {
+    margin-bottom: 0;
+}
+
+/* SHOW/HIDE FUNCTIONALITY */
+.neo-hidden {
+    display: none;
+}
+
+.neo-show {
+    display: block;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ACTION SECTION */
+.neo-action-section {
+    background: var(--neo-gray-light);
+    border: var(--neo-border-thick);
+    box-shadow: var(--neo-shadow-large);
+    padding: 50px;
+    text-align: center;
+}
+
+.neo-action-buttons {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.neo-action-buttons .neo-btn-action {
+    min-width: 200px;
+    font-size: 18px;
+    padding: 22px 35px;
+    margin: 0;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+    .neo-detail-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .neo-detail-sidebar {
+        order: -1;
+    }
+    
+    .neo-programs-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .neo-programs-title {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 768px) {
+    .neo-read-container {
+        padding: 20px 15px;
+    }
+    
+    .neo-university-header {
+        padding: 40px 25px;
+    }
+    
+    .neo-detail-title {
+        font-size: clamp(28px, 6vw, 48px);
+        letter-spacing: 2px;
+    }
+    
+    .neo-detail-main,
+    .neo-programs-section,
+    .neo-action-section {
+        padding: 35px 25px;
+    }
+    
+    .neo-program-category {
+        padding: 25px;
+    }
+    
+    .neo-program-header {
+        margin: -25px -25px 25px -25px;
+        font-size: 18px;
+        padding: 15px 20px;
+    }
+    
+    .neo-quick-info-card,
+    .neo-detail-image-card {
+        padding: 25px 20px;
+    }
+    
+    .neo-quick-info-title {
+        margin: -25px -20px 25px -20px;
+        font-size: 22px;
+    }
+    
+    .neo-action-buttons {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .neo-action-buttons .neo-btn-action {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .neo-university-header {
+        padding: 30px 20px;
+    }
+    
+    .neo-detail-main,
+    .neo-programs-section {
+        padding: 25px 20px;
+    }
+    
+    .neo-section-title {
+        font-size: 24px;
+        padding: 15px 20px;
+    }
+    
+    .neo-programs-title {
+        font-size: 28px;
+        padding: 20px;
+    }
+    
+    .neo-info-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .neo-info-value {
+        align-self: stretch;
+        text-align: center;
+    }
+    
+    .neo-campus-section {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    
+    .neo-btn-campus {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .neo-program-item {
+        padding: 15px 20px;
+        font-size: 16px;
+    }
+}

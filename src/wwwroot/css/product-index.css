@@ -1,0 +1,416 @@
+/* PRODUCT INDEX PAGE STYLES - University Listing */
+
+.neo-create-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.neo-btn-create {
+    background: var(--neo-lime);
+    color: var(--neo-black);
+    font-size: 20px;
+    padding: 20px 40px;
+    border: 6px solid var(--neo-black);
+    box-shadow: 8px 8px 0px var(--neo-black);
+    font-family: var(--neo-font-body);
+    font-weight: 900;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.neo-btn-create:hover {
+    background: var(--neo-magenta);
+    box-shadow: 12px 12px 0px var(--neo-black);
+    transform: translateX(-3px) translateY(-3px);
+}
+
+/* SEARCH SECTION */
+.neo-search-section {
+    margin-bottom: 50px;
+    padding: 20px 0;
+}
+
+.neo-search-card {
+    background: var(--neo-yellow);
+    border: 10px solid var(--neo-black);
+    box-shadow: 20px 20px 0px var(--neo-black);
+    padding: 60px;
+    border-radius: 0;
+    margin: 30px 0;
+}
+
+.neo-search-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.neo-search-title {
+    font-family: var(--neo-font-heading);
+    font-size: 48px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    margin: 0 0 15px 0;
+    color: var(--neo-black);
+    text-shadow: 4px 4px 0px var(--neo-magenta);
+}
+
+.neo-search-subtitle {
+    font-family: var(--neo-font-body);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0;
+    color: var(--neo-black);
+}
+
+.neo-search-form {
+    background: var(--neo-white);
+    border: 8px solid var(--neo-black);
+    box-shadow: 12px 12px 0px var(--neo-black);
+    padding: 40px;
+    margin-top: 30px;
+}
+
+.neo-form-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr auto;
+    gap: 25px;
+    align-items: end;
+}
+
+.neo-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.neo-input-container {
+    width: 100%;
+}
+
+.neo-search-form .neo-label {
+    font-family: var(--neo-font-body);
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    color: var(--neo-black);
+    text-transform: uppercase;
+}
+
+.neo-input,
+.neo-select {
+    padding: 25px 30px;
+    font-size: 18px;
+    font-weight: 700;
+    border: 6px solid var(--neo-black);
+    box-shadow: 6px 6px 0px var(--neo-black);
+    background: var(--neo-white);
+    font-family: var(--neo-font-body);
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.neo-input:focus,
+.neo-select:focus {
+    outline: none;
+    background: var(--neo-cyan);
+    box-shadow: 7px 7px 0px var(--neo-black);
+    transform: translateX(-2px) translateY(-2px);
+}
+
+.neo-btn-search {
+    padding: 25px 40px;
+    font-size: 20px;
+    font-weight: 900;
+    background: var(--neo-magenta);
+    color: var(--neo-black);
+    border: 6px solid var(--neo-black);
+    box-shadow: 6px 6px 0px var(--neo-black);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    font-family: var(--neo-font-body);
+    min-width: 200px;
+}
+
+.neo-btn-search:hover {
+    background: var(--neo-orange);
+    box-shadow: 8px 8px 0px var(--neo-black);
+    transform: translateX(-2px) translateY(-2px);
+}
+
+/* RESULTS SECTION */
+.neo-results-section {
+    margin-bottom: 50px;
+}
+
+.neo-results-header {
+    background: var(--neo-blue);
+    color: var(--neo-white);
+    padding: 30px;
+    border: 6px solid var(--neo-black);
+    box-shadow: 8px 8px 0px var(--neo-black);
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.neo-results-title {
+    font-family: var(--neo-font-heading);
+    font-size: 36px;
+    font-weight: 900;
+    margin: 0;
+    letter-spacing: 2px;
+    text-shadow: 3px 3px 0px var(--neo-black);
+}
+
+.neo-results-count {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--neo-peach);
+    color: var(--neo-black);
+    padding: 20px 25px;
+    border: 4px solid var(--neo-black);
+    box-shadow: 4px 4px 0px var(--neo-black);
+}
+
+.count-number {
+    font-family: var(--neo-font-heading);
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.count-text {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+/* UNIVERSITY LIST */
+.neo-universities-list {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+.neo-university-item {
+    background: var(--neo-white);
+    border: 6px solid var(--neo-black);
+    box-shadow: 8px 8px 0px var(--neo-black);
+    margin-bottom: 25px;
+    padding: 0;
+    transition: all 0.1s ease;
+    overflow: hidden;
+}
+
+.neo-university-item:hover {
+    transform: translate(4px, 4px);
+    box-shadow: 4px 4px 0px var(--neo-black);
+}
+
+.neo-university-info {
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.neo-university-details {
+    flex: 1;
+}
+
+.neo-university-type-badge {
+    display: inline-block;
+    background: var(--neo-lime);
+    color: var(--neo-black);
+    padding: 8px 15px;
+    border: 3px solid var(--neo-black);
+    font-family: var(--neo-font-heading);
+    font-size: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    box-shadow: 3px 3px 0 var(--neo-black);
+}
+
+.neo-university-name {
+    font-family: var(--neo-font-heading);
+    font-size: 32px;
+    font-weight: 900;
+    margin: 0 0 15px 0;
+    color: var(--neo-black);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.neo-university-description {
+    font-family: var(--neo-font-body);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--neo-black);
+    margin: 0;
+    line-height: 1.6;
+    text-transform: none;
+}
+
+.neo-university-actions {
+    flex-shrink: 0;
+}
+
+.neo-btn-view-more {
+    background: var(--neo-cyan);
+    color: var(--neo-black);
+    font-size: 18px;
+    padding: 20px 35px;
+    border: 5px solid var(--neo-black);
+    box-shadow: 6px 6px 0px var(--neo-black);
+    font-family: var(--neo-font-body);
+    font-weight: 900;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    letter-spacing: 2px;
+    display: inline-block;
+}
+
+.neo-btn-view-more:hover {
+    background: var(--neo-magenta);
+    box-shadow: 8px 8px 0px var(--neo-black);
+    transform: translateX(-2px) translateY(-2px);
+    color: var(--neo-black);
+    text-decoration: none;
+}
+
+/* ALERT STYLES */
+.neo-alert {
+    padding: 20px 25px;
+    border: 6px solid var(--neo-black);
+    box-shadow: 6px 6px 0px var(--neo-black);
+    margin-bottom: 30px;
+    font-family: var(--neo-font-body);
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.neo-alert-error {
+    background: var(--danger-red);
+    color: var(--neo-white);
+}
+
+.neo-alert-info {
+    background: var(--neo-cyan);
+    color: var(--neo-black);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .neo-search-card {
+        padding: 30px 20px;
+        margin: 20px 0;
+    }
+    
+    .neo-search-title {
+        font-size: 32px;
+    }
+    
+    .neo-form-row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .neo-btn-search {
+        width: 100%;
+        margin-top: 15px;
+    }
+    
+    .neo-results-header {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .neo-universities-list {
+        padding: 0 15px;
+    }
+    
+    .neo-university-item {
+        margin-bottom: 20px;
+    }
+    
+    .neo-university-info {
+        flex-direction: column;
+        gap: 20px;
+        padding: 25px;
+        text-align: center;
+    }
+    
+    .neo-university-name {
+        font-size: 26px;
+    }
+    
+    .neo-btn-view-more {
+        width: 100%;
+        padding: 18px 25px;
+        font-size: 16px;
+    }
+}
+
+/* Fix for invisible footer privacy link */
+.neo-footer .footer-link {
+    color: var(--neo-white) !important;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border: 3px solid var(--neo-white);
+    padding: 8px 16px;
+    display: inline-block;
+    box-shadow: 4px 4px 0 var(--neo-black);
+    background: var(--neo-black);
+}
+
+.neo-footer .footer-link:hover {
+    background: var(--neo-yellow);
+    color: var(--neo-black) !important;
+    box-shadow: 6px 6px 0 var(--neo-black);
+    transform: translate(-2px, -2px);
+}
+
+/* ✓ ADDED — COLOR STYLES FOR FLAGS */
+.flag-public {
+    background-color: #2ecc71 !important; /* green */
+    color: black;
+}
+
+.flag-private {
+    background-color: #e74c3c !important; /* red */
+    color: white;
+}
+
+.flag-online {
+    background-color: #3498db !important; /* blue */
+    color: white;
+}
+
+.flag-community {
+    background-color: #e67e22 !important; /* orange */
+    color: white;
+}
+
+.flag-other {
+    background-color: #9b59b6 !important; /* purple */
+    color: white;
+}
+
+.flag-undefined {
+    background-color: #7f8c8d !important; /* grey */
+    color: white;
+}

@@ -1,0 +1,126 @@
+﻿@*
+   Index page - lists all products and provides links to create and read a product.
+   This file contains minimal C# code blocks and markup. Use the IndexModel to access products.
+*@
+@page
+@model ContosoCrafts.WebSite.Pages.Product.IndexModel
+@{
+    // Page title displayed in the layout
+    ViewData["Title"] = "Index page";
+}
+
+@section PageSpecificStyles {
+    <link rel="stylesheet" href="~/css/product-index.css" asp-append-version="true" />
+}
+
+<div class="neo-create-section">
+    <a asp-page="Create" class="neo-btn neo-btn-create">+ CREATE NEW UNIVERSITY</a>
+</div>
+
+@* Display any TempData messages *@
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="neo-alert neo-alert-error">⚠️ @TempData["ErrorMessage"]</div>
+}
+else if (TempData["Message"] != null)
+{
+    <div class="neo-alert neo-alert-info">ℹ️ @TempData["Message"]</div>
+}
+
+<div class="neo-search-section">
+    <div class="neo-search-card">
+        <div class="neo-search-header">
+            <h1 class="neo-search-title">🔍 FIND YOUR UNIVERSITY</h1>
+            <p class="neo-search-subtitle">DISCOVER AMAZING UNIVERSITIES WORLDWIDE</p>
+        </div>
+
+        <form method="get" class="neo-search-form">
+            <div class="neo-form-row">
+                <div class="neo-form-group">
+                    <label class="neo-label">🎯 SEARCH UNIVERSITY</label>
+                    <div class="neo-input-container">
+                        <input type="text" class="neo-input" name="SearchTerm" value="@Model.SearchTerm"
+                            placeholder="TYPE UNIVERSITY NAME OR LOCATION...">
+                    </div>
+                </div>
+
+                <div class="neo-form-group">
+                    <label class="neo-label">📚 UNIVERSITY TYPE</label>
+                    <select class="neo-select" name="TypeFilter">
+                        <option value="">ALL TYPES</option>
+                        @foreach (var t in
+                                                Enum.GetValues(typeof(ContosoCrafts.WebSite.Models.ProductTypeEnum)).Cast<ContosoCrafts.WebSite.Models.ProductTypeEnum>())
+                        {
+                            if (t == ContosoCrafts.WebSite.Models.ProductTypeEnum.Undefined) continue;
+                            <option value="@t" selected="@(Model.TypeFilter == t.ToString())">
+                                @if (t == ContosoCrafts.WebSite.Models.ProductTypeEnum.Public)
+                                {
+                                    <text>🏛️</text>
+                                }
+                                else if (t == ContosoCrafts.WebSite.Models.ProductTypeEnum.Private)
+                                {
+                                    <text>🏢</text>
+                                }
+                                else if (t == ContosoCrafts.WebSite.Models.ProductTypeEnum.Community)
+                                {
+                                    <text>🌍</text>
+                                }
+                                else if (t == ContosoCrafts.WebSite.Models.ProductTypeEnum.Online)
+                                {
+                                    <text>💻</text>
+                                }
+                                else
+                                {
+                                    <text>🎓</text>
+                                }
+                                @t
+                            </option>
+                        }
+                    </select>
+                </div>
+
+                <div class="neo-form-group neo-btn-group">
+                    <button type="submit" class="neo-btn neo-btn-search">
+                        🔍 SEARCH NOW!
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="neo-results-section">
+    <div class="neo-results-header">
+        <h2 class="neo-results-title">🌟 UNIVERSITY RESULTS</h2>
+        <div class="neo-results-count">
+            <span class="count-number">@Model.Products.Count()</span>
+            <span class="count-text">UNIVERSITIES FOUND</span>
+        </div>
+    </div>
+
+    <div class="neo-universities-list">
+        @foreach (var product in Model.Products)
+        {
+            <div class="neo-university-item">
+                <div class="neo-university-info">
+                    <div class="neo-university-details">
+                        <span class="neo-university-type-badge @Model.GetFlagClass(product.TypeOfUniversity)">
+                            @product.TypeOfUniversity
+                        </span>
+                        <h3 class="neo-university-name">@product.Title</h3>
+                        @if (!string.IsNullOrEmpty(product.Description))
+                        {
+                            <p class="neo-university-description">@(product.Description.Length > 150 ?
+                                                        product.Description.Substring(0, 150) + "..." : product.Description)</p>
+                        }
+                    </div>
+                    <div class="neo-university-actions">
+                        <a asp-page="Read" asp-route-id="@product.Id" class="neo-btn neo-btn-view-more">
+                            VIEW MORE
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

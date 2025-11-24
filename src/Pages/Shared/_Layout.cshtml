@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - UniHub</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/shared.css" asp-append-version="true" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo+Black:wght@400&family=Public+Sans:wght@400;600;700;800&family=Bebas+Neue:wght@400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    @RenderSection("PageSpecificStyles", required: false)
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light neo-navbar">
+            <div class="container">
+                <a class="navbar-brand neo-brand" asp-area="" asp-page="/Index">
+                    <div class="brand-container">
+                        <div class="brand-icon">🎓</div>
+                        <span class="brand-text">UNIHUB</span>
+                    </div>
+                </a>
+
+                <button class="navbar-toggler neo-toggler" type="button" data-toggle="collapse"
+                    data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="neo-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1 neo-nav">
+                        <li class="nav-item">
+                            <a class="nav-link neo-nav-link" asp-area="" asp-page="/Privacy">PRIVACY</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link neo-nav-link" asp-area="" asp-page="./Product/Index">UNIVERSITIES</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link neo-nav-link" asp-area="" asp-page="/AboutUs">ABOUT US</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="neo-main-container">
+        <main role="main" class="neo-content">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="neo-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">© 2025 UNIHUB - ALL RIGHTS RESERVED</div>
+                <a asp-area="" asp-page="/Privacy" class="footer-link">PRIVACY POLICY</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        // Ensure bootstrapInterop exists so Blazor JS interop can call it even if site.js
+        window.bootstrapInterop = window.bootstrapInterop || {
+            showModal: function (selector) {
+                try {
+                    if (window.jQuery) { $(selector).modal('show'); }
+                    else { console.warn('jQuery not found - cannot show modal via bootstrapInterop (fallback)'); }
+                } catch (e) { console.error(e); }
+            },
+            hideModal: function (selector) {
+                try {
+                    if (window.jQuery) { $(selector).modal('hide'); }
+                } catch (e) { console.error(e); }
+            }
+        };
+    </script>
+    <script src="_framework/blazor.server.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>

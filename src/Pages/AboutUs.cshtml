@@ -1,0 +1,156 @@
+@*
+    About Us page - static content describing the UniHub project, team and values.
+    Updated to Neo-Brutalism design system.
+*@
+@page
+@model AboutModel
+@{
+    ViewData["Title"] = "ABOUT US";
+}
+
+@section PageSpecificStyles {
+    <link rel="stylesheet" href="~/css/general-pages.css" asp-append-version="true" />
+}
+
+<div class="neo-about-container">
+    <!-- PAGE HEADER -->
+    <div class="neo-page-header">
+        <h1 class="neo-page-title">🚀 ABOUT UNIHUB</h1>
+        <p class="neo-page-subtitle">
+            YOUR GATEWAY TO UNIVERSITY EXPLORATION
+        </p>
+    </div>
+
+    <!-- ABOUT CONTENT -->
+    <div class="neo-about-content">
+        <div class="neo-intro-section">
+            <div class="neo-section-header">
+                <h2 class="neo-section-title">💡 WHAT IS UNIHUB?</h2>
+            </div>
+            <div class="neo-section-body">
+                <p class="neo-section-text">
+                    UNIHUB IS A SIMPLE PLATFORM BUILT TO HELP STUDENTS EXPLORE DIFFERENT UNIVERSITIES AND LEARN MORE
+                    ABOUT HIGHER EDUCATION OPTIONS IN ONE PLACE.
+                </p>
+            </div>
+        </div>
+
+        <div class="neo-sections-grid">
+            <!-- MISSION SECTION -->
+            <div class="neo-about-section">
+                <div class="neo-section-header">
+                    <h3 class="neo-section-title">🎯 OUR MISSION</h3>
+                </div>
+                <div class="neo-section-body">
+                    <p class="neo-section-text">
+                        TO MAKE UNIVERSITY DISCOVERY EASY, TRANSPARENT, AND ACCESSIBLE FOR EVERY STUDENT.
+                    </p>
+                    <div class="neo-mission-goals">
+                        <div class="neo-goal-item">🌐 GLOBAL ACCESSIBILITY</div>
+                        <div class="neo-goal-item">🔍 TRANSPARENT INFORMATION</div>
+                        <div class="neo-goal-item">🎓 STUDENT EMPOWERMENT</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TEAM SECTION -->
+            <div class="neo-about-section">
+                <div class="neo-section-header">
+                    <h3 class="neo-section-title">👥 OUR TEAM</h3>
+                </div>
+                <div class="neo-section-body">
+                    <div class="neo-team-info">
+                        <div class="neo-team-item">
+                            <span class="neo-team-label">TEAM NUMBER:</span>
+                            <span class="neo-team-value">3</span>
+                        </div>
+                        <div class="neo-team-item">
+                            <span class="neo-team-label">TEAM NAME:</span>
+                            <span class="neo-team-value">PINK SOLDIERS</span>
+                        </div>
+                        <div class="neo-team-item">
+                            <span class="neo-team-label">TEAM MEMBERS:</span>
+                            <div class="neo-team-members">
+                                <ul class="neo-members-list">
+                                    <li class="neo-member-item">• YASHASHREE BEDMUTHA</li>
+                                    <li class="neo-member-item">• SATWIKA VEMULAPALLI</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="neo-team-message">
+                        <p class="neo-message-text">
+                            THANK YOU FOR VISITING UNIHUB — WE'RE CONSTANTLY IMPROVING TO HELP STUDENTS FIND THE BEST
+                            EDUCATIONAL OPPORTUNITIES!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VALUES SECTION -->
+            <div class="neo-about-section">
+                <div class="neo-section-header">
+                    <h3 class="neo-section-title">💎 OUR VALUES</h3>
+                </div>
+                <div class="neo-section-body">
+                    <div class="neo-values-grid">
+                        <div class="neo-value-item">
+                            <div class="neo-value-icon">🔍</div>
+                            <div class="neo-value-text">TRANSPARENCY</div>
+                        </div>
+                        <div class="neo-value-item">
+                            <div class="neo-value-icon">♿</div>
+                            <div class="neo-value-text">ACCESSIBILITY</div>
+                        </div>
+                        <div class="neo-value-item">
+                            <div class="neo-value-icon">🎓</div>
+                            <div class="neo-value-text">STUDENT-CENTRIC</div>
+                        </div>
+                        <div class="neo-value-item">
+                            <div class="neo-value-icon">💡</div>
+                            <div class="neo-value-text">INNOVATION</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TESTIMONIALS SECTION -->
+            <div class="neo-about-section">
+                <div class="neo-section-header">
+                    <h3 class="neo-section-title">💬 TESTIMONIALS</h3>
+                </div>
+                <div class="neo-section-body">
+                    <div class="neo-testimonials-container">
+                        <div class="neo-testimonial">
+                            <div class="neo-quote-icon">💭</div>
+                            <div class="neo-quote-text">"UNIHUB MADE MY UNIVERSITY SEARCH SO MUCH EASIER!"</div>
+                            <div class="neo-quote-author">— JANE D.</div>
+                        </div>
+                        <div class="neo-testimonial">
+                            <div class="neo-quote-icon">⭐</div>
+                            <div class="neo-quote-text">"A ONE-STOP PLATFORM FOR STUDENTS LOOKING FOR HIGHER EDUCATION
+                                GUIDANCE."</div>
+                            <div class="neo-quote-author">— RAHUL K.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTACT SECTION -->
+        <div class="neo-contact-section">
+            <div class="neo-section-header">
+                <h3 class="neo-section-title">📞 GET IN TOUCH</h3>
+            </div>
+            <div class="neo-section-body">
+                <p class="neo-section-text">
+                    HAVE QUESTIONS OR SUGGESTIONS? WE'D LOVE TO HEAR FROM YOU!
+                </p>
+                <div class="neo-contact-actions">
+                    <a href="mailto:hello@unihub.com" class="neo-btn neo-btn-primary">📧 CONTACT US</a>
+                    <a href="/" class="neo-btn neo-btn-secondary">🏠 GO HOME</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+﻿@page
+@using ContosoCrafts.WebSite.Components
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@section PageSpecificStyles {
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+}
+
+<div class="neo-hero-section">
+    <div class="neo-hero-card">
+        <h1 class="neo-hero-title">
+            🎓 DISCOVER YOUR FUTURE!
+        </h1>
+        <h2 class="neo-hero-subtitle">
+            FIND THE PERFECT UNIVERSITY FOR YOUR DREAMS
+        </h2>
+        <div class="neo-hero-description">
+            <p>EXPLORE THOUSANDS OF UNIVERSITIES WORLDWIDE</p>
+            <p>START YOUR ACADEMIC JOURNEY TODAY!</p>
+        </div>
+        <div class="neo-hero-actions">
+            <a href="/Product" class="neo-btn neo-btn-hero-primary">
+                🚀 EXPLORE UNIVERSITIES
+            </a>
+            <a href="/Product/Create" class="neo-btn neo-btn-hero-secondary">
+                ➕ ADD NEW UNIVERSITY
+            </a>
+        </div>
+    </div>
+    
+    <div class="neo-decorative-shapes">
+        <div class="neo-shape-square"></div>
+        <div class="neo-shape-circle"></div>
+        <div class="neo-shape-star">⭐</div>
+    </div>
+</div>
+
+@(await Html.RenderComponentAsync<ProductList>(RenderMode.ServerPrerendered))

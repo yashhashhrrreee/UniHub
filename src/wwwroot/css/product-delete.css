@@ -1,0 +1,534 @@
+/* PRODUCT DELETE PAGE - NEO-BRUTALISM DESIGN */
+
+/* MAIN CONTAINER */
+.neo-delete-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background: var(--neo-background);
+    min-height: calc(100vh - 200px);
+}
+
+/* PAGE HEADER */
+.neo-page-header {
+    background: var(--danger-red);
+    border: var(--neo-border-thick);
+    box-shadow: var(--neo-shadow-large);
+    padding: 60px 40px;
+    margin-bottom: 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.neo-page-header::before {
+    content: '🚨';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 50px;
+    opacity: 0.3;
+}
+
+.neo-page-header::after {
+    content: '⚠️';
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-size: 50px;
+    opacity: 0.3;
+}
+
+.neo-page-title {
+    font-family: var(--neo-font-heading);
+    font-size: clamp(48px, 8vw, 72px);
+    font-weight: 900;
+    letter-spacing: 4px;
+    margin: 0 0 20px 0;
+    color: var(--neo-white);
+    text-shadow: 4px 4px 0px var(--neo-black);
+    text-transform: uppercase;
+    line-height: 1.1;
+}
+
+.neo-page-subtitle {
+    font-family: var(--neo-font-body);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--neo-white);
+    margin: 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0px var(--neo-black);
+}
+
+/* WARNING SECTION */
+.neo-warning-section {
+    margin-bottom: 50px;
+}
+
+.neo-warning-card {
+    background: var(--neo-orange);
+    border: var(--neo-border-thick);
+    box-shadow: var(--neo-shadow-large);
+    padding: 50px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    position: relative;
+}
+
+.neo-warning-icon {
+    font-size: 80px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.neo-warning-content {
+    flex: 1;
+}
+
+.neo-warning-title {
+    font-family: var(--neo-font-heading);
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--neo-black);
+    margin: 0 0 20px 0;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 3px 3px 0px var(--neo-white);
+}
+
+.neo-warning-text {
+    font-family: var(--neo-font-body);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--neo-black);
+    margin: 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 1.5;
+}
+
+/* UNIVERSITY SECTION */
+.neo-university-section {
+    background: var(--neo-white);
+    border: var(--neo-border-thick);
+    box-shadow: var(--neo-shadow-large);
+    margin-bottom: 50px;
+}
+
+.neo-section-header {
+    background: var(--neo-blue);
+    padding: 25px 40px;
+    border-bottom: var(--neo-border-thick);
+}
+
+.neo-section-title {
+    text-shadow: 1px 1px 0px var(--neo-black);
+    transform: rotate(-0.5deg);
+}
+
+/* UNIVERSITY CARD */
+.neo-university-card {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 40px;
+    padding: 40px;
+}
+
+.neo-university-image {
+    background: var(--neo-peach);
+    border: var(--neo-border);
+    box-shadow: var(--neo-shadow);
+    padding: 20px;
+    height: fit-content;
+}
+
+.neo-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border: var(--neo-border);
+    box-shadow: var(--neo-shadow-small);
+}
+
+.neo-image-placeholder {
+    width: 100%;
+    height: 200px;
+    background: var(--neo-gray-light);
+    border: var(--neo-border);
+    box-shadow: var(--neo-shadow-small);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.neo-placeholder-icon {
+    font-size: 40px;
+}
+
+.neo-placeholder-text {
+    font-family: var(--neo-font-body);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--neo-black);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* UNIVERSITY DETAILS */
+.neo-university-details {
+    background: var(--neo-cyan);
+    border: var(--neo-border);
+    box-shadow: var(--neo-shadow);
+    padding: 30px;
+}
+
+.neo-university-name {
+    font-family: var(--neo-font-heading);
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--neo-black);
+    margin: 0 0 30px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: var(--neo-yellow);
+    padding: 20px;
+    border: var(--neo-border);
+    box-shadow: var(--neo-shadow);
+    text-align: center;
+    transform: rotate(-0.5deg);
+}
+
+.neo-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.neo-detail-item {
+    background: var(--neo-white);
+    border: var(--neo-border);
+    box-shadow: var(--neo-shadow-small);
+    padding: 20px;
+}
+
+.neo-detail-label {
+    font-family: var(--neo-font-body);
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--neo-white);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    background: var(--neo-black);
+    padding: 8px 15px;
+    margin: -20px -20px 15px -20px;
+    text-shadow: none;
+}
+
+.neo-detail-value {
+    font-family: var(--neo-font-body);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--neo-black);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    line-height: 1.3;
+}
+
+/* CAMPUSES SECTION */
+.neo-campuses-section {
+    background: var(--neo-lime);
+    border: var(--neo-border);
+    box-shadow: var(--neo-shadow);
+    padding: 25px;
+    margin-top: 20px;
+}
+
+.neo-campus-list {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.neo-campus-tag {
+    background: var(--neo-magenta);
+    color: var(--neo-black);
+    border: var(--neo-border);
+    box-shadow: var(--neo-shadow-small);
+    padding: 10px 15px;
+    font-family: var(--neo-font-body);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* CONFIRMATION SECTION */
+.neo-confirmation-section {
+    background: var(--neo-orange);
+    border: var(--neo-border-thick);
+    box-shadow: var(--neo-shadow-large);
+    margin-bottom: 40px;
+}
+
+.neo-section-body {
+    padding: 40px;
+}
+
+.neo-confirmation-text {
+    font-family: var(--neo-font-body);
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--neo-black);
+    margin: 0 0 30px 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.neo-safety-notice {
+    background: var(--neo-yellow);
+    border: var(--neo-border);
+    box-shadow: var(--neo-shadow);
+    padding: 25px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.neo-safety-text {
+    font-family: var(--neo-font-heading);
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--neo-black);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px var(--neo-white);
+}
+
+/* ACTIONS SECTION */
+.neo-actions-section {
+    background: var(--neo-gray-light);
+    border: var(--neo-border-thick);
+    box-shadow: var(--neo-shadow-large);
+    padding: 50px;
+    text-align: center;
+}
+
+.neo-action-buttons {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* BUTTONS */
+.neo-btn {
+    display: inline-block;
+    font-family: var(--neo-font-heading);
+    font-weight: 900;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: var(--neo-border-thick);
+    box-shadow: var(--neo-shadow-large);
+    padding: 30px 50px;
+    font-size: 20px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    min-width: 250px;
+    position: relative;
+    overflow: hidden;
+}
+
+.neo-btn-danger {
+    background: var(--danger-red);
+    color: var(--neo-white);
+    text-shadow: 3px 3px 0px var(--neo-black);
+    animation: shake 0.5s ease-in-out infinite;
+}
+
+.neo-btn-danger:hover {
+    background: var(--neo-black);
+    color: var(--danger-red);
+    text-shadow: none;
+    box-shadow: 15px 15px 0px var(--danger-red);
+    transform: translateX(-5px) translateY(-5px);
+    animation: none;
+}
+
+.neo-btn-safe {
+    background: var(--success-green);
+    color: var(--neo-white);
+    text-shadow: 3px 3px 0px var(--neo-black);
+}
+
+.neo-btn-safe:hover {
+    background: var(--neo-lime);
+    color: var(--neo-black);
+    text-shadow: none;
+    box-shadow: 15px 15px 0px var(--neo-black);
+    transform: translateX(-5px) translateY(-5px);
+}
+
+/* DANGER ANIMATIONS */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+    20%, 40%, 60%, 80% { transform: translateX(2px); }
+}
+
+/* HOVER EFFECTS */
+.neo-warning-card:hover {
+    background: var(--neo-yellow);
+    transform: translateX(-3px) translateY(-3px);
+    box-shadow: 15px 15px 0px var(--neo-black);
+}
+
+.neo-university-card:hover .neo-university-name {
+    background: var(--neo-magenta);
+    transform: rotate(0deg);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+    .neo-university-card {
+        grid-template-columns: 250px 1fr;
+        gap: 30px;
+    }
+    
+    .neo-details-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .neo-delete-container {
+        padding: 20px 15px;
+    }
+    
+    .neo-page-header {
+        padding: 40px 25px;
+    }
+    
+    .neo-warning-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+        padding: 35px 25px;
+    }
+    
+    .neo-warning-icon {
+        font-size: 60px;
+    }
+    
+    .neo-warning-title {
+        font-size: 32px;
+    }
+    
+    .neo-university-card {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 30px 25px;
+    }
+    
+    .neo-university-image {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .neo-university-details {
+        padding: 25px;
+    }
+    
+    .neo-university-name {
+        font-size: 28px;
+        padding: 15px;
+    }
+    
+    .neo-section-body {
+        padding: 30px 25px;
+    }
+    
+    .neo-actions-section {
+        padding: 35px 25px;
+    }
+    
+    .neo-action-buttons {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .neo-btn {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    .neo-campus-list {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .neo-page-title {
+        font-size: clamp(32px, 6vw, 48px);
+        letter-spacing: 2px;
+    }
+    
+    .neo-page-subtitle {
+        font-size: 18px;
+    }
+    
+    .neo-warning-title {
+        font-size: 28px;
+        letter-spacing: 2px;
+    }
+    
+    .neo-warning-text {
+        font-size: 16px;
+    }
+    
+    .neo-section-title {
+        font-size: 28px;
+        transform: none;
+    }
+    
+    .neo-university-name {
+        font-size: 24px;
+        letter-spacing: 1px;
+    }
+    
+    .neo-confirmation-text {
+        font-size: 18px;
+    }
+    
+    .neo-btn {
+        padding: 25px 35px;
+        font-size: 18px;
+    }
+    
+    .neo-detail-value {
+        font-size: 16px;
+    }
+    
+    .neo-campus-tag {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+}

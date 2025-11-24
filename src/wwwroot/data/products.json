@@ -1,0 +1,373 @@
+[
+  {
+    "Id": "uw",
+    "Maker": "@data-source",
+    "Location": "Seattle, WA",
+    "img": "/images/UW.jpg",
+    "Url": "https://www.washington.edu/",
+    "Title": "University of Washington",
+    "Description": "Established in 1861. Located in Seattle, WA. Famously Known For Computer Science, Medicine.",
+    "Ratings": [
+      5,
+      5,
+      3,
+      2,
+      1,
+      5,
+      3,
+      4,
+      3,
+      1,
+      1
+    ],
+    "graduateDegree": [
+      "MSc Computer Science",
+      "MS Data Science",
+      "MEng Computer Engineering",
+      "MD (Medicine)",
+      "MBA"
+    ],
+    "undergraduateDegree": [
+      "BS Computer Science",
+      "BA/BS Psychology",
+      "BS Informatics",
+      "BA Business Administration",
+      "BS Electrical Engineering"
+    ],
+    "TypeOfUniversity": "Public",
+    "NumberOfDepartments": 42,
+    "HasOnlinePrograms": true,
+    "Campuses": [
+      "Seattle",
+      "Tacoma",
+      "Bothell"
+    ]
+  },
+  {
+    "Id": "sbu",
+    "Maker": "@data-source",
+    "Location": "Stony Brook, NY",
+    "img": "/images/sbu.jpg",
+    "Url": "https://www.stonybrook.edu/",
+    "Title": "Stony Brook University",
+    "Description": "Established in 1957. Located in Stony Brook, NY. Famously Known For Clinical Psychology, Applied Mathematics, Nursing",
+    "Ratings": [
+      3
+    ],
+    "graduateDegree": [
+      "MS Computer Science",
+      "PhD Applied Mathematics",
+      "DNP (Nursing)",
+      "MA Psychology",
+      "MS Data Science"
+    ],
+    "undergraduateDegree": [
+      "BS Psychology",
+      "BS Biology",
+      "BS Business Management",
+      "BS Computer Science",
+      "BS Applied Mathematics"
+    ],
+    "TypeOfUniversity": "Public",
+    "NumberOfDepartments": 38,
+    "HasOnlinePrograms": true,
+    "Campuses": [
+      "Stony Brook",
+      "Southampton"
+    ]
+  },
+  {
+    "Id": "njit",
+    "Maker": null,
+    "Location": "Newark, NJ",
+    "img": "/images/NJIT.png",
+    "Url": "https://www.njit.edu",
+    "Title": "New Jersey Institute of Technology",
+    "Description": "Established in 1881. Located in Newark, NJ. Famously Known For Engineering, IT, Architecture",
+    "Ratings": null,
+    "graduateDegree": null,
+    "undergraduateDegree": null,
+    "TypeOfUniversity": "Public",
+    "NumberOfDepartments": 28,
+    "HasOnlinePrograms": true,
+    "Campuses": [
+      "Newark"
+    ]
+  },
+  {
+    "Id": "harvard",
+    "Maker": "jenlooper",
+    "Location": "Cambridge, MA",
+    "img": "/images/HU.png",
+    "Url": "https://www.harvard.edu/",
+    "Title": "Harvard University",
+    "Description": "Established in 1636. Located in Cambridge, Massachusetts. Famously Known For Economics, Computer Science, Political Science/Government, and Social Sciences.",
+    "Ratings": [
+      4
+    ],
+    "graduateDegree": [
+      "JD (Law)",
+      "MPA (Public Administration)",
+      "AM (Master of Arts) Economics",
+      "SM (Master of Science) Computer Science",
+      "MBA"
+    ],
+    "undergraduateDegree": [
+      "AB Economics",
+      "AB Government",
+      "AB Computer Science",
+      "AB Social Studies",
+      "AB Applied Mathematics"
+    ],
+    "TypeOfUniversity": "Private",
+    "NumberOfDepartments": 40,
+    "HasOnlinePrograms": true,
+    "Campuses": [
+      "Cambridge",
+      "Allston"
+    ]
+  },
+  {
+    "Id": "mit-light",
+    "Maker": "@data-source",
+    "Location": "Cambridge, MA",
+    "img": "/images/MIT.png",
+    "Url": "https://www.mit.edu/",
+    "Title": "Massachusetts Institute of Technology (MIT)",
+    "Description": "Established in 1861. Located in Cambridge, Massachusetts. Famously Known For Computer Science, Mechanical Engineering, Mathematics, and Electrical Engineering.",
+    "Ratings": [
+      4
+    ],
+    "graduateDegree": [
+      "M.Eng Electrical Engineering",
+      "SM Mechanical Engineering",
+      "PhD Computer Science",
+      "Master of Finance (MFin)",
+      "MBA"
+    ],
+    "undergraduateDegree": [
+      "BS Computer Science",
+      "BS Mechanical Engineering",
+      "BS Mathematics",
+      "BS Electrical Engineering",
+      "BS Physics"
+    ],
+    "TypeOfUniversity": "Private",
+    "NumberOfDepartments": 34,
+    "HasOnlinePrograms": true,
+    "Campuses": [
+      "Cambridge"
+    ]
+  },
+  {
+    "Id": "stanford-university",
+    "Maker": "@data-source",
+    "Location": "Stanford, CA",
+    "img": "/images/SU.jpg",
+    "Url": "https://www.stanford.edu/",
+    "Title": "Stanford University",
+    "Description": "Established in 1891. Located in Stanford, California. Famously Known For Computer Science, Human Biology, Economics, and all disciplines of Engineering.",
+    "Ratings": [
+      4
+    ],
+    "graduateDegree": [
+      "MS Computer Science",
+      "MS Engineering",
+      "JD (Law)",
+      "Master of Public Policy (MPP)",
+      "MBA"
+    ],
+    "undergraduateDegree": [
+      "BS Computer Science",
+      "BA Human Biology",
+      "BA/BS Economics",
+      "BS Mechanical Engineering",
+      "BA Political Science"
+    ],
+    "TypeOfUniversity": "Private",
+    "NumberOfDepartments": 30,
+    "HasOnlinePrograms": true,
+    "Campuses": [
+      "Stanford"
+    ]
+  },
+  {
+    "Id": "uniofcal",
+    "Maker": "@data-source",
+    "Location": "Berkeley, CA",
+    "img": "/images/UniOfCal.jpg",
+    "Url": "https://www.berkeley.edu",
+    "Title": "University of California",
+    "Description": "Established in 1868. Located in Berkeley, CA. Famously known for Computer Science, Electrical Engineering, and Data Science.",
+    "Ratings": [
+      4
+    ],
+    "graduateDegree": [
+      "MEng Electrical Engineering",
+      "MS Computer Science",
+      "MS Data Science",
+      "MPH (Public Health)",
+      "MBA"
+    ],
+    "undergraduateDegree": [
+      "BS Computer Science",
+      "BA Economics",
+      "BA/BS Molecular Biology",
+      "BS Electrical Engineering",
+      "BA Political Science"
+    ],
+    "TypeOfUniversity": "Public",
+    "NumberOfDepartments": 44,
+    "HasOnlinePrograms": true,
+    "Campuses": [
+      "Berkeley",
+      "Los Angeles",
+      "San Diego"
+    ]
+  },
+  {
+    "Id": "johnhop",
+    "Maker": "@data-source",
+    "Location": "Baltimore, MD",
+    "img": "/images/johnhopkins.jpeg",
+    "Url": "https://www.jhu.edu/",
+    "Title": "John Hopkins University",
+    "Description": "Established in 1876. Located in Baltimore, MD. Famously known for Medicine, Biomedical Research, and Public Health.",
+    "Ratings": [
+      4
+    ],
+    "graduateDegree": [
+      "MD (Medicine)",
+      "Master of Public Health (MPH)",
+      "MS Biomedical Engineering",
+      "MA International Relations",
+      "MS Finance"
+    ],
+    "undergraduateDegree": [
+      "BA/BS Cellular \u0026 Molecular Biology",
+      "BS Biomedical Engineering",
+      "BA/BS Public Health",
+      "BS Computer Science",
+      "BS Neuroscience"
+    ],
+    "TypeOfUniversity": "Private",
+    "NumberOfDepartments": 36,
+    "HasOnlinePrograms": true,
+    "Campuses": [
+      "Homewood",
+      "East Baltimore",
+      "DC"
+    ]
+  },
+  {
+    "Id": "uniofmich",
+    "Maker": "@data-source",
+    "Location": "Ann Arbor, MI",
+    "img": "/images/uniofmich.jpg",
+    "Url": "https://umich.edu/",
+    "Title": "University of Michigan",
+    "Description": "Established in 1817. Located in Ann Arbor, MI. Famously known for Computer Science, Medicine, and Engineering.",
+    "Ratings": [
+      4
+    ],
+    "graduateDegree": [
+      "MS Computer Science",
+      "PhD Engineering",
+      "JD (Law)",
+      "Master of Social Work (MSW)",
+      "MBA"
+    ],
+    "undergraduateDegree": [
+      "BS Computer Science",
+      "BA Business Administration",
+      "BA Economics",
+      "BA Psychology",
+      "BS Mechanical Engineering"
+    ],
+    "TypeOfUniversity": "Public",
+    "NumberOfDepartments": 45,
+    "HasOnlinePrograms": true,
+    "Campuses": [
+      "Ann Arbor",
+      "Dearborn",
+      "Flint"
+    ]
+  },
+  {
+    "Id": "princeton",
+    "Maker": "@data-source",
+    "Location": "Princeton, NJ",
+    "img": "/images/Princeton.jpg",
+    "Url": "https://www.princeton.edu/",
+    "Title": "Princeton University",
+    "Description": "Established in 1746. Located in Princeton, New Jersey. Famously Known For Public Affairs, Economics, Mathematics, and Computer Science.",
+    "Ratings": [
+      5
+    ],
+    "graduateDegree": [
+      "MPA (Public Affairs)",
+      "MS Financial Engineering",
+      "PhD Mathematics",
+      "PhD Computer Science",
+      "Master of Architecture"
+    ],
+    "undergraduateDegree": [
+      "BS Computer Science",
+      "BA Economics",
+      "BA Public Policy",
+      "BA Operations Research",
+      "BA History"
+    ],
+    "TypeOfUniversity": "Private",
+    "NumberOfDepartments": 27,
+    "HasOnlinePrograms": true,
+    "Campuses": [
+      "Princeton"
+    ]
+  },
+  {
+    "Id": "columbia",
+    "Maker": "@data-source",
+    "Location": "New York, NY",
+    "img": "/images/Columbia.png",
+    "Url": "https://www.columbia.edu/",
+    "Title": "Columbia University",
+    "Description": "Established in 1754. Located in New York, New York. Famously Known For Journalism, Law, Business, and Arts and Humanities.",
+    "Ratings": [
+      4,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5
+    ],
+    "graduateDegree": [
+      "MS Journalism",
+      "LL.M. (Law)",
+      "MBA",
+      "MS Computer Science",
+      "MA Statistics"
+    ],
+    "undergraduateDegree": [
+      "BS Computer Science",
+      "BA Economics",
+      "BA Political Science",
+      "BA Psychology",
+      "BA History"
+    ],
+    "TypeOfUniversity": "Private",
+    "NumberOfDepartments": 39,
+    "HasOnlinePrograms": true,
+    "Campuses": [
+      "Morningside Heights",
+      "Manhattanville"
+    ]
+  }
+]

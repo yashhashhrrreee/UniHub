@@ -1,0 +1,414 @@
+@page
+@model ContosoCrafts.WebSite.Pages.Product.CreateModel
+@using ContosoCrafts.WebSite.Models
+
+@{
+    ViewData["Title"] = "Create University";
+}
+
+@section PageSpecificStyles {
+    <link rel="stylesheet" href="~/css/product-create.css" asp-append-version="true" />
+}
+
+<div class="neo-create-container">
+    <div class="neo-page-header">
+        <h1 class="neo-page-title">🏭 CREATE NEW UNIVERSITY</h1>
+        <p class="neo-page-subtitle">ADD A NEW UNIVERSITY TO THE DATABASE</p>
+    </div>
+
+    <div class="neo-form-container">
+        <form method="post" enctype="multipart/form-data" novalidate class="neo-form">
+            <div asp-validation-summary="All" class="neo-validation-errors"></div>
+            @Html.AntiForgeryToken()
+
+            <input type="hidden" asp-for="Product.Id" />
+
+            <!-- Basic Information Section -->
+            <div class="neo-form-section">
+                <h2 class="neo-section-title">📚 BASIC INFORMATION</h2>
+
+                <div class="neo-form-grid">
+                    <div class="neo-form-group">
+                        <label asp-for="Product.Title" class="neo-label">🎓 UNIVERSITY NAME <span
+                                class="neo-required">*</span></label>
+                        <input asp-for="Product.Title" class="neo-input" placeholder="ENTER UNIVERSITY NAME..." />
+                        <span asp-validation-for="Product.Title" class="neo-error"></span>
+                    </div>
+
+                    <div class="neo-form-group">
+                        <label asp-for="Product.TypeOfUniversity" class="neo-label">🏛️ UNIVERSITY TYPE</label>
+                        <select asp-for="Product.TypeOfUniversity" class="neo-select">
+                            <option value="">-- SELECT TYPE --</option>
+                            <option value="Public">🏛️ PUBLIC</option>
+                            <option value="Private">🏢 PRIVATE</option>
+                            <option value="Community">🌍 COMMUNITY</option>
+                            <option value="Online">💻 ONLINE</option>
+                            <option value="Other">🎓 OTHER</option>
+                        </select>
+                        <span asp-validation-for="Product.TypeOfUniversity" class="neo-error"></span>
+                    </div>
+                </div>
+
+                <div class="neo-form-group">
+                    <label asp-for="Product.Description" class="neo-label">📝 DESCRIPTION</label>
+                    <textarea asp-for="Product.Description" class="neo-textarea" rows="4"
+                        placeholder="ENTER UNIVERSITY DESCRIPTION..."></textarea>
+                    <span asp-validation-for="Product.Description" class="neo-error"></span>
+                </div>
+
+                <div class="neo-form-grid">
+                    <div class="neo-form-group">
+                        <label asp-for="Product.Url" class="neo-label">🌐 WEBSITE URL <span
+                                class="neo-required">*</span></label>
+                        <input asp-for="Product.Url" type="url" class="neo-input"
+                            placeholder="https://university.edu" />
+                        <div class="neo-help-text">MUST START WITH https://</div>
+                        <span asp-validation-for="Product.Url" class="neo-error"></span>
+                    </div>
+
+                    <div class="neo-form-group">
+                        <label asp-for="Product.Location" class="neo-label">📍 LOCATION <span
+                                class="neo-required">*</span></label>
+                        <input asp-for="Product.Location" class="neo-input" placeholder="CITY, STATE, COUNTRY..." />
+                        <span asp-validation-for="Product.Location" class="neo-error"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- University Details Section -->
+            <div class="neo-form-section">
+                <h2 class="neo-section-title">🏢 UNIVERSITY DETAILS</h2>
+
+                <div class="neo-form-grid">
+                    <div class="neo-form-group">
+                        <label asp-for="Product.NumberOfDepartments" class="neo-label">🏢 NUMBER OF DEPARTMENTS</label>
+                        <input asp-for="Product.NumberOfDepartments" type="number" class="neo-input" min="1" max="500"
+                            placeholder="ENTER NUMBER..." />
+                        <span asp-validation-for="Product.NumberOfDepartments" class="neo-error"></span>
+                    </div>
+
+                    <div class="neo-form-group">
+                        <label class="neo-label">💻 ONLINE PROGRAMS</label>
+                        <div class="neo-checkbox-container">
+                            <label class="neo-checkbox-label">
+                                <input asp-for="Product.HasOnlinePrograms" class="neo-checkbox" type="checkbox" />
+                                <span class="neo-checkbox-custom"></span>
+                                <span class="neo-checkbox-text">OFFERS ONLINE PROGRAMS</span>
+                            </label>
+                        </div>
+                        <span asp-validation-for="Product.HasOnlinePrograms" class="neo-error"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image Section -->
+            <div class="neo-form-section">
+                <h2 class="neo-section-title">🖼️ UNIVERSITY IMAGE</h2>
+
+                <div class="neo-form-group">
+                    <label asp-for="Product.Image" class="neo-label">🔗 IMAGE</label>
+                    <input asp-for="Product.Image" type="hidden" />
+                    <div class="neo-image-preview">
+                        <img id="imagePreview" src="" alt="Preview" class="neo-preview-image" style="display: none;" />
+                        <div id="imageUploadStatus" class="neo-error"></div>
+                    </div>
+                </div>
+
+                <div class="neo-file-upload-section">
+                    <div class="neo-file-upload">
+                        <input id="imageFile" type="file" accept=".png,.jpg,.jpeg,image/png,image/jpeg"
+                            class="neo-file-input" />
+                        <label for="imageFile" class="neo-file-label">
+                            📁 CHOOSE FILE
+                        </label>
+                        <span class="neo-file-text">JPG, PNG • MAX 5MB</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Degrees Section -->
+            <div class="neo-form-section">
+                <h2 class="neo-section-title">🎓 ACADEMIC PROGRAMS</h2>
+
+                <div class="neo-degrees-container">
+                    <div class="neo-degree-section">
+                        <h3 class="neo-degree-title">🎓 GRADUATE DEGREES</h3>
+                        <p class="neo-degree-help">SELECT COMMON DEGREES OR ADD CUSTOM ONES</p>
+
+                        <div class="neo-preset-checkboxes">
+                            <label class="neo-preset-label">
+                                <input type="checkbox" value="MSc" onchange="togglePreset(this, 'GraduateDegree')"
+                                    class="neo-preset-checkbox">
+                                <span class="neo-preset-text">MSc</span>
+                            </label>
+                            <label class="neo-preset-label">
+                                <input type="checkbox" value="MBA" onchange="togglePreset(this, 'GraduateDegree')"
+                                    class="neo-preset-checkbox">
+                                <span class="neo-preset-text">MBA</span>
+                            </label>
+                            <label class="neo-preset-label">
+                                <input type="checkbox" value="PhD" onchange="togglePreset(this, 'GraduateDegree')"
+                                    class="neo-preset-checkbox">
+                                <span class="neo-preset-text">PhD</span>
+                            </label>
+                        </div>
+
+                        <div id="grad-list" class="neo-dynamic-list">
+                            <div class="neo-input-group">
+                                <input name="Product.GraduateDegree" class="neo-input"
+                                    placeholder="GRADUATE DEGREE NAME..." />
+                                <button type="button" class="neo-btn-remove" onclick="removeRow(this)">
+                                    🗑️ REMOVE
+                                </button>
+                            </div>
+                        </div>
+                        <button type="button" class="neo-btn-add" onclick="addDegreeInput('GraduateDegree')">
+                            ➕ ADD GRADUATE DEGREE
+                        </button>
+                    </div>
+
+                    <div class="neo-degree-section">
+                        <h3 class="neo-degree-title">🎓 UNDERGRADUATE DEGREES</h3>
+                        <p class="neo-degree-help">SELECT COMMON DEGREES OR ADD CUSTOM ONES</p>
+
+                        <div class="neo-preset-checkboxes">
+                            <label class="neo-preset-label">
+                                <input type="checkbox" value="BSc" onchange="togglePreset(this, 'UnderGraduateDegree')"
+                                    class="neo-preset-checkbox">
+                                <span class="neo-preset-text">BSc</span>
+                            </label>
+                            <label class="neo-preset-label">
+                                <input type="checkbox" value="BA" onchange="togglePreset(this, 'UnderGraduateDegree')"
+                                    class="neo-preset-checkbox">
+                                <span class="neo-preset-text">BA</span>
+                            </label>
+                            <label class="neo-preset-label">
+                                <input type="checkbox" value="BEng" onchange="togglePreset(this, 'UnderGraduateDegree')"
+                                    class="neo-preset-checkbox">
+                                <span class="neo-preset-text">BEng</span>
+                            </label>
+                        </div>
+
+                        <div id="undergrad-list" class="neo-dynamic-list">
+                            <div class="neo-input-group">
+                                <input name="Product.UnderGraduateDegree" class="neo-input"
+                                    placeholder="UNDERGRADUATE DEGREE NAME..." />
+                                <button type="button" class="neo-btn-remove" onclick="removeRow(this)">
+                                    🗑️ REMOVE
+                                </button>
+                            </div>
+                        </div>
+                        <button type="button" class="neo-btn-add" onclick="addDegreeInput('UnderGraduateDegree')">
+                            ➕ ADD UNDERGRADUATE DEGREE
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Campus Section -->
+            <div class="neo-form-section">
+                <h2 class="neo-section-title">🏢 CAMPUSES</h2>
+
+                <div class="neo-form-group">
+                    <p class="neo-section-help">ADD CAMPUS LOCATIONS FOR THIS UNIVERSITY</p>
+                    <div id="campus-list" class="neo-dynamic-list">
+                        <div class="neo-input-group">
+                            <input name="Product.Campuses" class="neo-input" placeholder="CAMPUS NAME OR LOCATION..." />
+                            <button type="button" class="neo-btn-remove" onclick="removeRow(this)">
+                                🗑️ REMOVE
+                            </button>
+                        </div>
+                    </div>
+                    <button type="button" class="neo-btn-add" onclick="addCampusInput()">
+                        ➕ ADD CAMPUS
+                    </button>
+                    <span asp-validation-for="Product.Campuses" class="neo-error"></span>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="neo-form-actions">
+                <button type="submit" class="neo-btn-primary">
+                    💾 SAVE UNIVERSITY
+                </button>
+                <a id="cancelBtn" asp-page="./Index" class="neo-btn-secondary">
+                    ❌ CANCEL
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    // Utility: add a new degree input row to the specified list
+    function addDegreeInput(type, value) {
+        var listId = (type === 'GraduateDegree') ? 'grad-list' : 'undergrad-list';
+        var container = document.getElementById(listId);
+
+        var group = document.createElement('div');
+        group.className = 'neo-input-group';
+
+        var input = document.createElement('input');
+        input.name = (type === 'GraduateDegree') ? 'Product.GraduateDegree' : 'Product.UnderGraduateDegree';
+        input.className = 'neo-input';
+        input.placeholder = type === 'GraduateDegree' ? 'GRADUATE DEGREE...' : 'UNDERGRADUATE DEGREE...';
+        if (value) input.value = value;
+        group.appendChild(input);
+
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'neo-btn neo-btn-remove';
+        btn.textContent = '❌ REMOVE';
+        btn.onclick = function () { removeRow(btn); };
+        group.appendChild(btn);
+
+        // Mark preset rows so toggling checkboxes can remove them
+        if (value) group.dataset.preset = 'true';
+
+        container.appendChild(group);
+    }
+
+    function removeRow(btn) {
+        var group = btn.closest('.neo-input-group');
+        if (group) group.remove();
+    }
+
+    // Add a campus input row
+    function addCampusInput(value) {
+        var container = document.getElementById('campus-list');
+
+        var group = document.createElement('div');
+        group.className = 'neo-input-group';
+
+        var input = document.createElement('input');
+        input.name = 'Product.Campuses';
+        input.className = 'neo-input';
+        input.placeholder = 'CAMPUS NAME...';
+        if (value) input.value = value;
+        group.appendChild(input);
+
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'neo-btn neo-btn-remove';
+        btn.textContent = '❌ REMOVE';
+        btn.onclick = function () { removeRow(btn); };
+        group.appendChild(btn);
+
+        // Mark preset rows (not used currently) so they can be removed if needed
+        if (value) group.dataset.preset = 'true';
+
+        container.appendChild(group);
+    }
+
+    // Toggle a preset checkbox: add or remove a preset entry
+    function togglePreset(checkbox, type) {
+        var value = checkbox.value;
+        var listId = (type === 'GraduateDegree') ? 'grad-list' : 'undergrad-list';
+        var container = document.getElementById(listId);
+
+        if (checkbox.checked) {
+            // Add a preset input with the value and mark it so it can be removed
+            addDegreeInput(type, value);
+        } else {
+            // Remove first matching preset entry
+            var children = Array.from(container.querySelectorAll('.input-group'));
+            for (var i = 0; i < children.length; i++) {
+                var inp = children[i].querySelector('input');
+                if (inp && inp.value === value && children[i].dataset.preset === 'true') {
+                    children[i].remove();
+                    break;
+                }
+            }
+        }
+    }
+
+    // Handle AJAX image upload. Include antiforgery token from the form.
+    (function () {
+        var fileInput = document.getElementById('imageFile');
+        if (!fileInput) return;
+
+        fileInput.addEventListener('change', function (e) {
+            var file = fileInput.files[0];
+            if (!file) return;
+
+            var status = document.getElementById('imageUploadStatus');
+            var preview = document.getElementById('imagePreview');
+            status.textContent = '';
+
+            var formData = new FormData();
+            formData.append('image', file);
+
+            // Include the university title so the server can build an initials-based filename
+            var titleInput = document.querySelector('input[name="Product.Title"]');
+            if (titleInput) {
+                formData.append('title', titleInput.value);
+            }
+
+            // Add antiforgery token
+            var tokenInput = document.querySelector('input[name="__RequestVerificationToken"]');
+            if (tokenInput) {
+                formData.append('__RequestVerificationToken', tokenInput.value);
+            }
+
+            fetch('?handler=UploadImage', {
+                method: 'POST',
+                body: formData
+            }).then(function (resp) { return resp.json(); })
+                .then(function (json) {
+                    if (json && json.success) {
+                        // Set hidden Product.Image value
+                        var imageHidden = document.querySelector('input[name="Product.Image"]');
+                        if (imageHidden) imageHidden.value = json.imagePath;
+
+                        // Show preview
+                        if (preview) {
+                            preview.src = json.imagePath;
+                            preview.style.display = '';
+                        }
+                    } else {
+                        status.textContent = (json && json.error) ? json.error : 'Upload failed.';
+                    }
+                }).catch(function (err) {
+                    status.textContent = 'Upload error.';
+                });
+        });
+    })();
+
+    // Intercept cancel click to remove any uploaded image before navigating away
+    (function () {
+        var cancel = document.getElementById('cancelBtn');
+        if (!cancel) return;
+
+        cancel.addEventListener('click', function (e) {
+            // Prevent immediate navigation so we can delete uploaded image
+            e.preventDefault();
+
+            var href = cancel.getAttribute('href');
+            var imageHidden = document.querySelector('input[name="Product.Image"]');
+            var tokenInput = document.querySelector('input[name="__RequestVerificationToken"]');
+
+            // If there's no uploaded image, just navigate
+            if (!imageHidden || !imageHidden.value) {
+                window.location = href;
+                return;
+            }
+
+            // Only attempt to delete local images under /images/
+            if (imageHidden.value.indexOf('/images/') !== 0) {
+                window.location = href;
+                return;
+            }
+
+            var formData = new FormData();
+            formData.append('imagePath', imageHidden.value);
+            if (tokenInput) formData.append('__RequestVerificationToken', tokenInput.value);
+
+            fetch('?handler=DeleteImage', {
+                method: 'POST',
+                body: formData
+            }).finally(function () {
+                // Navigate away regardless of delete success
+                window.location = href;
+            });
+        });
+    })();
+</script>
